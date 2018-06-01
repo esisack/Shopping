@@ -1,0 +1,152 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Mis Datos</ui:define>
+
+	<ui:define name="content">
+		<h:form id="companyEditform" prependId="false"
+			enctype="multipart/form-data">
+
+			<div class="w3-row">
+				<div class="w3-quarter">
+					<h4>Datos de la Empresa</h4>
+				</div>
+				<div class="w3-threequarter w3-container"
+					style="text-align: end; margin-top: 15px;">
+					<p:commandButton value="Guardar cambios" icon="fa fa-fw fa-save"
+						actionListener="#{companyController.save}" process="@this"
+						update="@(form:companyEditForm)">
+					</p:commandButton>
+					<p:commandButton value="Cancelar cambios" icon="fa fa-fw fa-save" />
+				</div>
+			</div>
+			<p:separator />
+			<div class="w3-row w3-container">
+
+				<div class="w3-quarter w3-container">
+
+					<div class="container">
+						<p:graphicImage id="images"
+							value="/Pictures/#{companyController.selected.logo}"
+							style="width: 100%;height:145px;" />
+						<div class="centered">
+							<p:fileUpload id="fileIdPhoto"
+								fileUploadListener="#{companyController.uploadPhoto}"
+								mode="advanced" dragDropSupport="false" update="images"
+								sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+								auto="true" label="" />
+						</div>
+					</div>
+
+				</div>
+				<div class="w3-threequarter w3-container">
+					<div class="w3-row">
+						<div class="w3-third">
+							<p align="justify">
+								<h:outputText value="#{companyController.selected.companyId}"></h:outputText>
+								<p:inputText id="document"
+									value="#{companyController.selected.tin}"
+									placeholder="Documento" />
+							</p>
+						</div>
+						<div class="w3-third">
+							<p align="justify">
+								<p:selectOneMenu id="fiscalPosition"
+									value="#{companyController.selected.fiscalPosition}"
+									required="true" converter="selectOneMenuConverter">
+									<f:selectItem itemLabel="Posicion Fiscal" itemValue="" />
+									<f:selectItems value="#{fiscalPositionController.items}"
+										var="fiscalPosition" itemValue="#{fiscalPosition}"
+										itemLabel="#{fiscalPosition.fiscalPositionName.toString()}" />
+								</p:selectOneMenu>
+							</p>
+						</div>
+						<div class="w3-third">
+							<p align="justify">
+								<p:selectCheckboxMenu id="categories" label="Rubro Principal"
+									style="width:-moz-available;">
+									<f:selectItems value="#{itemTypeController.itemTypes}" />
+								</p:selectCheckboxMenu>
+							</p>
+						</div>
+					</div>
+					<p align="justify">
+						<p:inputText id="fiscalName"
+							value="#{companyController.selected.fiscalName}"
+							placeholder="Razon Social" style="width:-moz-available;" />
+					</p>
+					<p align="justify">
+						<p:inputText 
+							value="#{companyController.selected.fiscalName}"
+							placeholder="Razon Social" style="width:-moz-available;" />
+					</p>
+				</div>
+			</div>
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<h:outputLabel value="Nombre comercial" />
+				</div>
+				<div class="w3-threequarter w3-container">
+					<p:inputText id="businessName"
+						value="#{companyController.selected.businessName}"
+						placeholder="Nombre comercial" style="width:-moz-available;" />
+				</div>
+			</div>
+			<br />
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<h:outputLabel value="Domicilio legal" />
+				</div>
+				<div class="w3-threequarter w3-container">
+					<p:inputText id="street"
+						value="#{companyController.selected.address}" placeholder="Calle"
+						style="width:-moz-available;" />
+				</div>
+			</div>
+			<br />
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<h:outputLabel value="Ciudad - Dpto" />
+				</div>
+				<div class="w3-threequarter w3-container">
+					<p:inputText id="city" value="#{companyController.selected.city}"
+						placeholder="Ciudad" style="width:-moz-available;" />
+				</div>
+			</div>
+			<br />
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<h:outputLabel value="Contacto" />
+				</div>
+				<div class="w3-threequarter w3-container">
+					<p:inputText id="contact"
+						value="#{companyController.selected.contact}"
+						placeholder="Nombre del contacto" style="width:-moz-available;" />
+				</div>
+			</div>
+			<br />
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<h:outputLabel value="Telefono N°" />
+				</div>
+				<div class="w3-quarter w3-container">
+					<p:inputText id="phone" value="#{companyController.selected.phone}"
+						placeholder="Telefono" style="width:-moz-available;" />
+				</div>
+				<div class="w3-quarter w3-container">
+					<h:outputLabel value="Celular N°" />
+				</div>
+				<div class="w3-quarter w3-container w3-center">
+					<p:inputText id="cellPhone"
+						value="#{companyController.selected.celPhone}" placeholder="Movil"
+						style="width:-moz-available;" />
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

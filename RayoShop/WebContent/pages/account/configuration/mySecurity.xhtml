@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Mis Datos</ui:define>
+
+	<ui:define name="content">
+		<h:form id="form">
+
+			<h4>Datos de la Cuenta</h4>
+			<p:separator />
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<p align="justify">
+						<h:outputLabel value="Usuario" />
+					</p>
+				</div>
+				<div class="w3-threequarter w3-container">
+					<p align="justify">
+						<p:inplace id="userName" editor="true">
+							<p:inputText value="#{userController.userLoggedIn.name}"
+								placeholder="Nombre de usuario" />
+						</p:inplace>
+					</p>
+				</div>
+			</div>
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<p align="justify">
+						<h:outputLabel value="eMail" />
+					</p>
+				</div>
+				<div class="w3-threequarter w3-container">
+					<p align="justify">					
+						<p:inplace id="userMail" editor="true">
+							<p:inputText value="#{userController.userLoggedIn.mail}"
+								placeholder="mail principal" />
+						</p:inplace>
+					</p>
+				</div>
+			</div>
+			<div class="w3-row w3-container">
+				<div class="w3-quarter w3-container">
+					<p align="justify">					
+						<h:outputLabel value="Contrasena" />
+					</p>
+				</div>
+				<div class="w3-threequarter w3-container">
+				<p align="justify">					
+					<p:commandLink id="myPassword"  value="********"/>
+					<p:overlayPanel for="myPassword" showEffect="fade"
+						showCloseIcon="true">
+						<p:password placeholder="Ingresar clave actual"/>
+						<br/>
+						<p:password placeholder="Ingresar nueva clave"/>
+						<br/>
+						<p:password placeholder="Reingresar nueva clave"/>
+						<br/>
+						<p:commandButton value="Guardar"/>
+					</p:overlayPanel>
+				</p>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

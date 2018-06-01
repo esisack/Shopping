@@ -1,0 +1,167 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Carrito</ui:define>
+
+	<ui:define name="menu"></ui:define>
+	<ui:define name="content">
+		<h:form id="form">
+			<div class="w3-row">
+				<div class="w3-twothird w3-container datalist-noborder">
+					<h4>Mi carrito de compras</h4>
+					<p:separator />
+					<p:dataList id="shopCart" value="#{shopCartController.shopList}"
+						var="cart" type="unordered" itemType="none"
+						paginatorPosition="bottom" rows="4">
+						<div class="w3-row" style="margin: 3px; font-size: 12px;">
+							<div class="w3-container w3-twothird">
+								<div class="w3-row">
+									<div class="w3-quarter w3-container w3-center">
+										<p:graphicImage value="/Pictures/#{cart.item.firstPicture}"
+											style="width: 100px; height:100px; margin: auto;" />
+									</div>
+									<div class="w3-threequarter w3-container">
+										<p:commandLink>
+											<h:outputText value="#{cart.item.itemName}"
+												style="font-weight: bold;" />
+										</p:commandLink>
+										<br />
+										<h:outputText value=" por #{cart.item.company.businessName}" />
+										<br />
+										<br />
+										<h:outputText value="En Stock" style="color:green" />
+										<br />
+										<h:outputText value="Envio Gratis" />
+										<br />
+										<p:commandLink>
+											<h:outputText value="Eliminar" />
+										</p:commandLink>
+										<h:outputText value="  |  " />
+										<p:commandLink>
+											<h:outputText value="Guardar para despues" />
+										</p:commandLink>
+
+									</div>
+								</div>
+							</div>
+							<div class="w3-container w3-third">
+								<div class="w3-row">
+									<div class="w3-half w3-container">
+										<p>
+											<h:outputText value="$ #{cart.item.channelPrice}" />
+										</p>
+									</div>
+									<div class="w3-half w3-container">
+										<p>
+											<p:spinner value="#{cart.quantity}" size="5" />
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</p:dataList>
+				</div>
+				<div class="w3-third w3-container">
+					<h4>Totales</h4>
+					<p:separator />
+					<div class="w3-container w3-center">
+						<div class="w3-panel w3-gray" style="margin-top: 0px;">
+							<h5>(#{shopCartController.quantity}) Productos Seleccionados</h5>
+							<h5>por $ #{shopCartController.amount}</h5>
+							<h3>Enviar a Salta</h3>
+						</div>
+						<br />
+						<p>
+							<p:commandButton id="saveItem" value="Comprar" ajax="false"
+								icon="fa fa-credit-card" style="width:80%;"
+								action="/pages/orders/index.xhtml?faces-redirect=true" />
+						</p>
+						<p>
+							<p:commandButton value="Seguir comprando" icon="fa fa-th-list"
+								ajax="false" style="background:#eaf6f5;color:blue;width:80%;"
+								action="/pages/items/index.xhtml?faces-redirect=true" />
+						</p>
+					</div>
+				</div>
+			</div>
+			<p:separator />
+			<div class="w3-row">
+				<div class="w3-twothird w3-container datalist-noborder">
+					<h4>Lista de favoritos</h4>
+					<p:separator />
+					<p:dataList id="wishList" value="#{wishListController.items}"
+						var="wish" type="unordered" itemType="none"
+						paginatorPosition="bottom" rows="4">
+						<div class="w3-row" style="margin: 3px; font-size: 12px;">
+
+							<div class="w3-quarter w3-container">
+								<p:graphicImage value="/Pictures/#{wish.item.firstPicture}"
+									style="width: 100px; height:100px; margin: auto;" />
+							</div>
+							<div class="w3-half w3-container">
+								<p:commandLink>
+									<h:outputText value="#{wish.item.itemName}"
+										style="font-weight: bold;" />
+								</p:commandLink>
+								<br />
+								<br />
+								<h:outputText value=" por #{wish.item.company.businessName}" />
+								<br />
+								<h:outputText value="En Stock" style="color:green" />
+								<br />
+								<h:outputText value="Envio Gratis" />
+								<br />
+								<p:commandLink>
+									<h:outputText value="Comprar" />
+								</p:commandLink>
+								<h:outputText value="  |  " />
+								<p:commandLink>
+									<h:outputText value="Eliminar de favoritos" />
+								</p:commandLink>
+							</div>
+							<div class="w3-quarter w3-container">
+								<p>
+									<h:outputText value="$ #{wish.item.channelPrice}" />
+								</p>
+							</div>
+						</div>
+					</p:dataList>
+				</div>
+				<div class="w3-third w3-container">
+					<h4>Novedades</h4>
+					<p:separator />
+				</div>
+			</div>
+			<p:separator />
+			<div class="w3-row">
+				<div class="w3-twothird w3-container">
+					<p:carousel value="#{itemController.items}"
+						headerText="Tambien pueden intersarte los siguientes productos"
+						var="item" itemStyle="text-align:center" responsive="true">
+						<p:panelGrid columns="1" columnClasses="ui-grid-col-12"
+							layout="grid" styleClass="ui-panelgrid-blank"
+							style="font-size:9px;">
+							<f:facet name="header">
+								<p:graphicImage value="/Pictures/#{item.firstPicture}"
+									style="height:100px;width:100px;" />
+							</f:facet>
+							<h:outputText value="#{item.itemName}" />
+							<h:outputText value="Precio $#{item.retailPrice}" />
+							<h:outputText value="Precio $#{item.channelPrice}" />
+						</p:panelGrid>
+					</p:carousel>
+
+				</div>
+				<div class="w3-third w3-container">
+					<h4>Novedades</h4>
+					<p:separator />
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

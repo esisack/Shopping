@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Mis Ventas</ui:define>
+
+
+	<ui:define name="content">
+		<h:form id="form">
+			
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="card card-w-title">
+						<h1>DataTable</h1>
+						<p:dataTable var="row" value="#{countryController.items}"
+							reflow="true" paginator="true" selectionMode="single"
+							selection="#{countryController.selected}"
+							rowKey="#{row.countryId}" rows="10">
+							<f:facet name="header">
+                                LIST OF Countries
+                            </f:facet>
+							<p:column headerText="Id">
+								<h:outputText value="#{row.countryId}" />
+							</p:column>
+
+							<p:column headerText="ISO">
+								<h:outputText value="#{row.countryIso}" />
+							</p:column>
+
+							<p:column headerText="Country">
+								<h:outputText value="#{row.countryName}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+
+
+		</h:form>
+
+	</ui:define>
+
+
+
+</ui:composition>

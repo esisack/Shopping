@@ -1,0 +1,305 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+	<ui:define name="scroll">
+		<img src="/RayoCompras/resources/images/inmuebles.jpg" />
+	</ui:define>
+
+	<ui:define name="navBar">
+		<div class="w3-hide-small w3-border w3-row w3-white"
+			style="max-height: 54px; overflow: hidden; line-height: 2.3em;">
+			<div class="w3-container  w3-quarter w3-text-teal"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-chevron-down"></i> Categorías
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-green"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-check-square" style="max-height: 54px;"></i> Compra
+					Segura
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-blue"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-credit-card"></i> Pagás Online
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-purple"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-truck"></i> Envío 24hs <sup>max</sup>
+				</h2>
+			</div>
+		</div>
+
+	</ui:define>
+
+	<ui:define name="menu" />
+
+	<ui:define name="content">
+		<h:form id="ItemEditForm">
+			<!-- Div main -->
+			<div class="w3-col w3-padding-48 w3-light-grey">
+				<div class="w3-col w3-center w3-left" style="width: 4%">
+					<p></p>
+				</div>
+				<div class="w3-col w3-center  w3-right" style="width: 4%">
+					<p></p>
+				</div>
+
+				<!-- Div main -->
+				<div
+					class="w3-rest w3-container w3-padding w3-margin-bottom w3-center">
+
+
+					<!-- Categorias Cards  1,2,3,4 -->
+					<div class="w3-row-padding w3-text-dark-gray"
+						style="width: 95%; margin: auto;">
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/proy1.png" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Lomas
+										de Alicia</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$330.000</div>
+								</div>
+								<div class="bcardtext">FINANCIACIÓN EXTENSA de 60 cuotas.
+									Venta de lotes en un lugar soñado con todos los servicios y
+									obras terminadas. Ubicación: Granadero Baigorria en una
+									ubicación estratégica cercana a todo y segura, a tan solo
+									cuadras</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Arias Inmobiliaria</div>
+							</div>
+						</div>
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/proy2.png" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Trelles
+										1040</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">U$S
+										95.760</div>
+								</div>
+								<div class="bcardtext">Unidades exclusivas de uno y dos
+									ambientes entre 40 y 60m2 de superficie total.Inmejorable
+									ubicación y diseño de vanguardia.</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Remax Salta</div>
+							</div>
+						</div>
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/proy3.png" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Balcarce
+										Suites</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$
+										1.716.000</div>
+								</div>
+								<div class="bcardtext">Este proyecto está revolucionando
+									la forma de adquirir tu propiedad.Con una financiación inédita.
+									Adelantos desde 10% + bajas cuotas</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Horacio Bielli</div>
+							</div>
+						</div>
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/proy4.png" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Terreno
+										La Caldera</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$750.025</div>
+								</div>
+								<div class="bcardtext">Inversión o Vivienda. Hermoso lote
+									listo para escriturar, en calle principal. Agua y electricidad.
+									Urbanizacion abierta, sin expensas ...</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Particular</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!-- First line of products -->
+
+					<h2 class="titular">Propiedades destacadas EN VENTA</h2>
+					<div class="owl-two owl-carousel">
+
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i1.jpg" />
+							</div>
+							<div class="indexcardtitle">Dueño vende s/ comision</div>
+							<div class="indexcardtext">
+								Zuviria 400<span class="price">$580.000</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i2.jpg" />
+							</div>
+							<div class="indexcardtitle">Club de Campo</div>
+							<div class="indexcardtext">
+								El Tipal<span class="price">$7.800.000</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i3.jpg" />
+							</div>
+							<div class="indexcardtitle">Edificio Belgrano 1557</div>
+							<div class="indexcardtext">
+								Belgrano 1557<span class="price">$1.700.000</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i4.jpg" />
+							</div>
+							<div class="indexcardtitle">Club de Campo</div>
+							<div class="indexcardtext">
+								El Tipal<span class="price">u$432.000</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i5.jpg" />
+							</div>
+							<div class="indexcardtitle">Terreno Chicoana</div>
+							<div class="indexcardtext">
+								Chicoana<span class="price">$230.000</span>
+							</div>
+						</div>
+
+					</div>
+
+					<h2 class="titular">
+						<a href="#">Propiedades destacadas EN ALQUILER</a>
+					</h2>
+
+					<!-- Second line of products -->
+					<div class="owl-two owl-carousel">
+
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i6.jpg" />
+							</div>
+							<div class="indexcardtitle">Villagra F. 2540</div>
+							<div class="indexcardtext">
+								Villagra Francisco 2540 <span class="price">$8000</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i7.jpg" />
+							</div>
+							<div class="indexcardtitle">Aristobulo del Valle</div>
+							<div class="indexcardtext">
+								Aristobulo del Valle al 700 <span class="price">$10.500</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i8.jpg" />
+							</div>
+							<div class="indexcardtitle">Ituzaingó 2436</div>
+							<div class="indexcardtext">
+								Ituzaingó 2436<span class="price">$7000</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i9.jpg" />
+							</div>
+							<div class="indexcardtitle">Edificio Zod</div>
+							<div class="indexcardtext">
+								Mitre 1516 <span class="price">$11.700</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/i10.jpg" />
+							</div>
+							<div class="indexcardtitle">Casa Grand Bourg</div>
+							<div class="indexcardtext">
+								Godoy Cruz 1554 <span class="price">$17.500</span>
+							</div>
+						</div>
+
+					</div>
+
+					<p class="titular">
+						<a href="#">Ver todos</a>
+					</p>
+
+					<!-- Third line of products -->
+
+					<h2 class="titular">Inmobiliarias</h2>
+					<div class="owl-two owl-carousel w3-margin-bottom">
+
+						<img src="/RayoCompras/resources/images/inm-carminatti.jpg" /> <img
+							src="/RayoCompras/resources/images/inm-eduardonoman.jpg" /> <img
+							src="/RayoCompras/resources/images/inm-arias.jpg" /> <img src="/RayoCompras/resources/images/inm-remax.jpg" />
+						<img src="/RayoCompras/resources/images/inm-carpio.jpg" /> <img
+							src="/RayoCompras/resources/images/inm-horaciob.jpg" />
+
+					</div>
+
+					<p class="titular">
+						<a href="#">Ver todas</a>
+					</p>
+
+					<div class="w3-row w3-white w3-hide-small">
+						<div class="w3-col w3-padding w3-text-blue" style="width: 150px">
+							<p>Medios de Pago</p>
+						</div>
+						<div class="w3-rest owl-three owl-carousel w3-cell-middle"
+							style="min-height: 62px;">
+
+							<img src="/RayoCompras/resources/images/p-todopago.png" /> <img
+								src="/RayoCompras/resources/images/t-visa-c.png" /> <img src="/RayoCompras/resources/images/t-masterc-c.png" />
+							<img src="/RayoCompras/resources/images/t-american-c.png" /> <img
+								src="/RayoCompras/resources/images/t-naranja-c.png" /> <img src="/RayoCompras/resources/images/t-cabal-c.png" />
+							<img src="/RayoCompras/resources/images/t-dinersc-c.png" /> <img
+								src="/RayoCompras/resources/images/t-credimas-c.png" /> <img src="/RayoCompras/resources/images/t-visa-d.png" />
+							<img src="/RayoCompras/resources/images/t-maestro-d.png" /> <img
+								src="/RayoCompras/resources/images/t-cabal-d.png" />
+
+						</div>
+					</div>
+
+				</div>
+				<!-- End Div main -->
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

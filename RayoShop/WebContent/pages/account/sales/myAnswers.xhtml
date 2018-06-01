@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Productos</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formShow">
+			<p:growl id="messages" showDetail="true" />
+			<div class="w3-container datalist-noborder">
+				<div class="w3-row">
+					<div class="w3-twothird w3-container">
+						<h3>Consultas recibidas</h3>
+					</div>
+				</div>
+				<p:separator />
+				<p:dataList id="wishList" value="#{questionController.items}"
+					var="question" type="unordered" itemType="none"
+					paginatorPosition="bottom" rows="4">
+					<div class="w3-row" style="margin: 3px; font-size: 12px;">
+
+						<div class="w3-col w3-container" style="width: 100px">
+							<p:graphicImage library="images" name="#{question.item.firstPicture}"
+								style="width: 80px; height:80px; margin: auto;" />
+						</div>
+						<div class="w3-rest w3-container">
+							<div class="w3-container">
+								<p:commandLink>
+									<h:outputText value="#{question.item.itemName}"
+										style="font-weight: bold;" />
+								</p:commandLink>
+							</div>
+							<div class="w3-row w3-container w3-panel w3-light-gray">
+								<div class="w3-col" style="width: 30px">
+									<p align="justify">
+										<i class="fa fa-comments-o" />
+									</p>
+								</div>
+								<div class="w3-rest">
+									<p align="justify">
+										<h:outputText value="Pregunta:  #{question.request}" />
+									</p>
+								</div>
+							</div>
+							<div class="w3-row w3-container w3-panel w3-pale-green">
+								<div class="w3-col" style="width: 30px">
+									<p align="justify">
+										<i class="fa fa-comments" />
+									</p>
+								</div>
+								<div class="w3-rest">
+									<p align="justify">
+										<h:outputLabel for="response" value="Respuesta: " />
+										<p:inplace id="response" editor="true" >
+											<p:inputText value="#{question.response}"
+												placeholder="Haga clic para ingresar su respuesta" />
+										</p:inplace>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</p:dataList>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

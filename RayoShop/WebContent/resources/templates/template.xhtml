@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<h:outputStylesheet name="css/nanoscroller.css"
+		library="paradise-layout" />
+	<h:outputStylesheet name="rayo.css" library="css" />
+	<h:outputStylesheet name="css/animate.css" library="paradise-layout" />
+	<h:outputStylesheet name="css/layout-blue.css"
+		library="paradise-layout" />
+	<h:outputStylesheet name="owl.carousel.min.css" library="css" />
+	<h:outputStylesheet name="owl.theme.default.min.css" library="css" />
+	<h:outputScript library="js" name="owl.carousel.min.js" />
+	<script
+		src="http://maps.google.com/maps/api/js?key=AIzaSyA0VCSHoqA8zAK-cCuj7DJt2uIxp6X2jr8"
+		type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$('.owl-one')
+									.owlCarousel(
+											{
+												items : 1,
+												nav : true,
+												navText : [
+														'<i class="fa fa-angle-left" aria-hidden="true"></i>',
+														'<i class="fa fa-angle-right" aria-hidden="true"></i>' ],
+												loop : true,
+												dots : true,
+												margin : 0,
+												autoplay : true,
+												autoplayTimeout : 3500,
+												autoplayHoverPause : true
+											});
+						});
+		$('.play').on('click', function() {
+			owl.trigger('play.owl.autoplay', [ 1000 ])
+		})
+		$('.stop').on('click', function() {
+			owl.trigger('stop.owl.autoplay')
+		})
+
+		$(document).ready(function() {
+			$('.owl-two').owlCarousel({
+				loop : true,
+				margin : 10,
+				nav : true,
+				autoplay : true,
+				autoplayTimeout : 8000,
+				rewindNav : false,
+				lazyLoad : true,
+				responsive : {
+					0 : {
+						items : 1
+					},
+					500 : {
+						items : 2
+					},
+					600 : {
+						items : 3
+					},
+					1000 : {
+						items : 6
+					}
+				}
+			})
+		});
+
+		$(document).ready(function() {
+			$('.owl-three').owlCarousel({
+				loop : true,
+				margin : 10,
+				nav : true,
+				autoplay : true,
+				autoplayTimeout : 6000,
+				rewindNav : false,
+				responsive : {
+					0 : {
+						items : 1
+					},
+					600 : {
+						items : 4
+					},
+					1000 : {
+						items : 7
+					}
+				}
+			})
+		});
+	</script>
+</h:head>
+
+<h:body>
+	<ui:debug hotkey="x"
+		rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}" />
+
+	<div id="header" class="w3-container w3-card header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
+	<div id="scroll" class="w3-container" style="padding: 0px">
+		<ui:insert name="scroll">
+		</ui:insert>
+	</div>
+	<div id="navBar" class="w3-container w3-green" style="padding: 0px">
+		<ui:insert name="navBar">
+		</ui:insert>
+	</div>
+
+	<div class="w3-row" style="background: whitesmoke;">
+		<div id="menu" class="w3-col w3-container"
+			style="padding: 0px; width: 20%;">
+			<ui:insert name="menu">
+				<ui:include src="menu.xhtml" />
+			</ui:insert>
+		</div>
+		<div id="content" class="w3-rest w3-container datalist-noborder"
+			style="padding: 5px;">
+			<ui:insert name="content">
+		   		Content area.  See comments below this line in the source.
+			</ui:insert>
+		</div>
+	</div>
+
+	<div id="footer" class="w3-container"
+		style="background: light-gray; color: white; margin: 0px">
+		<ui:insert name="footer">
+			<ui:include src="footer.xhtml" />
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

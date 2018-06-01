@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<h:outputStylesheet name="css/nanoscroller.css"
+		library="paradise-layout" />
+	<h:outputStylesheet name="css/animate.css" library="paradise-layout" />
+	<h:outputStylesheet name="css/layout-orange.css"
+		library="paradise-layout" />
+	<ui:insert name="head" />
+</h:head>
+
+<h:body>
+
+	<h:form id="loginForm">
+
+		<div class="w3-container"
+			style="height: 100%; padding: 5px 24px; min-height: 768px; position: relative; width: 100%; background: linear-gradient(white, white)">
+
+			<div class="w3-container w3-center" style="height: 70px">
+				<p:graphicImage library="images" name="logo.png"
+					style="height:55px;width:250px;" />
+			</div>
+
+			<div
+				class="w3-panel w3-center w3-border w3-border-blue w3-round-small"
+				style="max-width: 460px; margin: auto;">
+				<h4 style="color: black; text-align: center;">Complete sus
+					datos</h4>
+				<br />
+
+				<h:messages></h:messages>
+
+				<div class="w3-container" style="max-width: 360px; margin: auto;">
+					<h4 style="color: black; text-align: center;">Ingrese aqui
+						para operar</h4>
+					<br />
+					<p>
+						<p:inputText value="#{userController.pmail}"
+							placeholder="Ingrese su mail" style="width:100%;" />
+					</p>
+					<p>
+						<p:password value="#{userController.ppassword}"
+							placeholder="Ingrese su clave" style="width:100%" />
+					</p>
+					<p>
+						<p:selectBooleanCheckbox />
+						<h:outputText>Recordarme</h:outputText>
+					</p>
+					<p>
+						<p:commandButton value="Iniciar sesion" ajax="false"
+							style="width:100%" action="#{userController.doLogin}" />
+					</p>
+					<p>
+						<h:outputText value="No tenes cuenta aun? "></h:outputText>
+						<p:commandLink id="login" value="Registrate aqui" ajax="false"
+							style="font-weight:bold"
+							action="/newUser.xhtml?faces-redirect=true" />
+					</p>
+					<p align="center">
+						<p:commandLink value="Recuperar usuario y clave" />
+					</p>
+
+					<p align="center">Al identificarte, aceptas nuestras
+						condiciones de uso, nuestro aviso de privacidad y nuestra politica
+						de cookies y publicidad en iternet</p>
+				</div>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+
+</html>
+

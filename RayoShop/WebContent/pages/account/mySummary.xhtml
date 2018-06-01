@@ -1,0 +1,105 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Mi Resumen</ui:define>
+
+	<ui:define name="content">
+		<h:form id="summaryForm">
+			<p:growl id="msgs" showDetail="true" />
+
+			<h3>Mi Resumen</h3>
+			<p:separator/>
+			<div class="w3-row-padding w3-margin-top">
+				<div class="w3-half">
+					<div class="w3-card-4 w3-margin" style="width: 100%">
+						<header class="w3-container w3-light-grey">
+							<h3>Consultas recibidas</h3>
+						</header>
+						<div class="w3-container">
+							<p>0 consultas recibidas</p>
+							<hr/>
+							<p>0 consultas respondidas</p>
+							<hr/>
+							<p>0 consultas sin contestar</p>						</div>
+					</div>
+				</div>
+				<div class="w3-half">
+					<div class="w3-card-4 w3-margin" style="width: 100%">
+						<header class="w3-container w3-light-grey">
+							<h3>Consultas realizadas</h3>
+						</header>
+						<div class="w3-container">
+							<p>0 consultas realizadas</p>
+							<hr/>
+							<p>0 consultas respondidas</p>
+							<hr/>
+							<p>0 consultas sin respuesta</p>						</div>
+					</div>
+				</div>
+
+				<div class="w3-half">
+					<div class="w3-card-4 w3-margin" style="width: 100%">
+						<header class="w3-container w3-light-grey">
+							<h3>Cotizaciones</h3>
+						</header>
+
+						<div class="w3-container">
+							<p>0 compras realizadas</p>
+							<hr/>
+							<p>0 compras pendientes</p>
+							<hr/>
+							<p>0 compras pendientes</p>
+						</div>
+					</div>
+				</div>
+				<div class="w3-half">
+					<div class="w3-card-4 w3-margin" style="width: 100%">
+						<header class="w3-container w3-light-grey">
+							<h3>Compras</h3>
+						</header>
+
+						<div class="w3-container">
+							<p>0 compras realizadas</p>
+							<hr/>
+							<p>0 compras pendientes</p>
+							<hr/>
+							<p>0 compras pendientes</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="w3-half">
+					<div class="w3-card-4 w3-margin" style="width: 100%">
+						<header class="w3-container w3-light-grey">
+							<h3>Publicaciones</h3>
+						</header>
+
+						<div class="w3-container">
+							<p>0 consultas recibidas</p>
+							<hr/>
+							<p>0 consultas realizadas</p>
+						</div>
+					</div>
+				</div>
+				<div class="w3-half">
+					<div class="w3-card-4 w3-margin" style="width: 100%">
+						<header class="w3-container w3-light-grey">
+							<h3>Ventas</h3>
+						</header>
+
+						<div class="w3-container">
+							<p>0 consultas recibidas</p>
+							<hr/>
+							<p>0 consultas realizadas</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

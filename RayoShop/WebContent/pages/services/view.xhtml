@@ -1,0 +1,227 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Producto</ui:define>
+	<ui:define name="head">
+		<style type="text/css">
+.datalist-noborder .ui-widget-content {
+	border: none;
+}
+
+.ui-datalist .ui-datalist-nobullets {
+	list-style-type: none;
+	padding: 0;
+}
+
+.ui-datalist .ui-datalist-item {
+	border: 1px solid #f5f5f5;
+}
+
+.ui-datalist .ui-paginator {
+	padding: 6px 12px;
+	border: none;
+}
+</style>
+	</ui:define>
+
+
+	<ui:define name="menu"></ui:define>
+	<ui:define name="content">
+		<h:form id="form">
+			<div class="w3-row">
+				<div class="w3-half w3-container w3-center">
+					<p:galleria value="#{itemController.selected.pictures}" var="image"
+						panelHeight="313" frameWidth="48" frameHeight="65"
+						filmstripPosition="top">
+
+						<p:graphicImage library="images" name="#{image.pictureName}"
+							style="margin:5px" height="240" width="240;" />
+					</p:galleria>
+				</div>
+				<div class="w3-half w3-container">
+					<h4>#{itemController.selected.itemName}</h4>
+					<div class="w3-row">
+						<div class="w3-third w3-container">
+							<p:rating value="4" readonly="true" />
+						</div>
+						<div class="w3-rest w3-container">
+							<p:commandLink value="12 opiniones" />
+							<p:spacer width="5px;" />
+							<p:commandLink value="10 respuestas" />
+							<p:spacer width="5px;" />
+							<h:outputText value="10 ventas realizadas"
+								style="font-weight: bold" />
+						</div>
+					</div>
+					<p:separator />
+					<div class="w3-row">
+						<div class="w3-third w3-container">
+							<h:outputText value="Empresa" />
+						</div>
+						<div class="w3-rest w3-container">
+							<h:outputText
+								value="#{itemController.selected.company.businessName}" />
+						</div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-third w3-container">
+							<h:outputText value="Precio publico" />
+						</div>
+						<div class="w3-rest w3-container">
+							<h:outputText value="$ #{itemController.selected.retailPrice}"
+								style="font-weight: bold" />
+						</div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-third w3-container">
+							<h:outputText value="Precio canal" />
+						</div>
+						<div class="w3-rest w3-container">
+							<h:outputText value="$ #{itemController.selected.channelPrice}"
+								style="font-weight: bold" />
+						</div>
+					</div>
+					<br />
+					<div class="w3-row">
+						<div class="w3-third w3-container">
+							<p>
+								<h:outputText value="Cantidad " />
+							</p>
+						</div>
+						<div class="w3-rest w3-container">
+
+							<p>
+								<p:spinner id="minMax" value="1" min="1" max="100" />
+							</p>
+							<p>
+								<p:commandButton id="saveItem" value="Agregar al carrito"
+									ajax="false" icon="ui-icon-disk"
+									style="width:80%;"
+									actionListener="#{shopCartController.createNewLine}"
+									action="viewCart.xhtml?faces-redirect=true" />
+							</p>
+							<p>
+								<p:commandButton value="Agregar a favoritos" ajax="false"
+									icon="ui-icon-disk"
+									style="width:80%;color:#006400;background:#98FB98"
+									actionListener="#{wishListController.createNewLine}" />
+							</p>
+							<p>
+								<p:commandButton value="Seguir comprando" icon="ui-icon-disk"
+									ajax="false"
+									style="background:#f6f1ea;color:#006400;;width:80%;"
+									action="showItems.xhtml?faces-redirect=true" />
+							</p>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<p:separator />
+			<div class="w3-row">
+				<div class="w3-twothird w3-container">
+					<p:carousel value="#{itemController.itemsByCompany}"
+						headerText="Otras publicaciones del vendedor" var="item"
+						itemStyle="text-align:center" responsive="true">
+						<p:panelGrid columns="1" columnClasses="ui-grid-col-12"
+							layout="grid" styleClass="ui-panelgrid-blank"
+							style="font-size:9px;">
+							<f:facet name="header">
+								<p:graphicImage library="images" name="#{item.picture}"
+									style="height:100px;width:100px;" />
+							</f:facet>
+							<h:outputText value="#{item.itemName}" />
+							<h:outputText value="Precio $#{item.retailPrice}" />
+							<h:outputText value="Precio $#{item.channelPrice}" />
+						</p:panelGrid>
+					</p:carousel>
+				</div>
+				<div class="w3-third w3-container">
+					<h4>Informacion de la tienda</h4>
+					<p align="center">
+						<h:outputText value="124 Items vendidos" />
+					</p>
+					<p>
+						<h:outputText value="Tiempo de respuesta" />
+						<p:rating value="4" readonly="true" />
+					</p>
+					<p>
+						<h:outputText value="Condiciones de envio" />
+						<p:rating value="4" readonly="true" />
+					</p>
+					<p>
+						<h:outputText value="Tratamiento general" />
+						<p:rating value="4" readonly="true" />
+					</p>
+				</div>
+			</div>
+			<p:separator />
+
+			<div class="w3-row">
+				<div class="w3-twothird w3-container">
+					<h4>Caracteristicas del producto</h4>
+					<p align="justify">
+						<h:outputText value="#{itemController.selected.description}"
+							style="font-size:12px;" />
+					</p>
+				</div>
+				<div class="w3-third w3-container">
+					<h4>Opiniones de clientes</h4>
+					<p>No se recibieron denuncias o quejas sobre este vendedor a lo
+						largo de los 320 dias que lleva operando en este sitio.</p>
+				</div>
+			</div>
+			<p:separator />
+
+			<div class="w3-row">
+				<div class="w3-twothird w3-container datalist-noborder">
+					<h4>Consultas sobre esta publicacion</h4>
+					<p:inputText value="#{questionController.activeRequest}"
+						placeholder="Ingrese una consulta para el vendedor"
+						style="width:70%" />
+					<p:commandButton value="Consultar" ajax="false"
+						icon="fa fa-fw fa-comment"
+						style="background:#f6f1ea;color:#006400;"
+						actionListener="#{questionController.createQuestion}" />
+					<p:dataList value="#{questionController.questionsByItem}"
+						var="question" type="unordered" itemType="none" rows="10">
+
+						<div class="w3-row w3-container">
+							<div class="w3-col" style="width: 30px">
+								<p align="justify">
+									<i class="fa fa-comments-o" />
+								</p>
+							</div>
+							<div class="w3-rest">
+								<p align="justify">
+									<h:outputText value="Pregunta:  #{question.request}" />
+								</p>
+							</div>
+							<div class="w3-col" style="width: 30px">
+								<p align="justify">
+									<i class="fa fa-comments" />
+								</p>
+							</div>
+							<div class="w3-rest">
+								<p align="justify">
+									<h:outputText value="Respuesta: #{question.response}" />
+								</p>
+							</div>
+						</div>
+					</p:dataList>
+				</div>
+				<div class="w3-third w3-container">
+					<h4>Informacion del sitio</h4>
+					<p>No se recibieron denuncias o quejas sobre este vendedor a lo
+						largo de los 320 dias que lleva operando en este sitio.</p>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

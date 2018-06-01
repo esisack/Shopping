@@ -1,0 +1,164 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="headerForm">
+		<div class="w3-row">
+			<div class="w3-quarter w3-container">
+				<p:commandLink action="/index.xhtml?faces-redirect=true">
+					<p:graphicImage library="images" name="logo.png"
+						style="height:55px;width:250px;" />
+				</p:commandLink>
+			</div>
+			<div class="w3-half w3-container" style="padding: 10px">
+				<div class="ui-inputgroup">
+					<p:inputText id="itemSearch" placeholder="Ingresar producto"
+						style="width:80%" />
+					<p:commandButton icon="fa fa-search" ajax="false"
+						styleClass="button"
+						action="/pages/items/index.xhtml?faces-redirect=true" />
+				</div>
+			</div>
+			<div class="w3-quarter w3-container"
+				style="padding: 13px; color: #9de5f9">
+				<p:commandButton value="Ya podes bajar nuestra APP"
+					icon="fa fa-mobile" disabled="true" />
+			</div>
+		</div>
+
+		<div class="w3-row" style="padding: 10px; color: white;">
+			<div class="w3-quarter w3-container">
+				<p:commandLink id="dynaButton" type="button"
+					style="color: white;font-weigth:bold;">
+					<h:outputText value="Categorias"
+						style="color: white;font-weigth:bold;" />
+					<i class="fa fa-angle-down" />
+				</p:commandLink>
+				<p:tieredMenu overlay="true" trigger="dynaButton" my="left top"
+					at="left bottom" style="width:250px" backLabel="Volver">
+					<p:menuitem value="Tefonos y Celulares"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="30"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Hogar y Electrodomesticos"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="35"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Tecnologia y Computacion"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="32"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Jugueteria y Regaleria"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="43"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Herramientas y Construccion"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="37"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Moda y Accesorios"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="28"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Turismo"
+						action="/pages/tourism/index.xhtml?faces-redirect=true" ajax="false">
+						<f:setPropertyActionListener value="49"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Vehiculos"
+						action="/pages/vehicles/index.xhtml?faces-redirect=true" ajax="false">
+						<f:setPropertyActionListener value="49"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:separator />
+					<p:menuitem value="Inmuebles"
+						action="/pages/realState/index.xhtml?faces-redirect=true" ajax="false">
+						<f:setPropertyActionListener value="49"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+				</p:tieredMenu>
+			</div>
+			<div class="w3-half w3-container">
+				<p:commandLink value="Ofertas de la semana" style="color:#ffffff;"
+					ajax="false" action="/pages/sales/index.xhtml?faces-redirect=true" />
+				<p:spacer width="20" />
+				<p:commandLink value="Comercios oficiales" style="color:#ffffff;"
+					ajax="false" action="/pages/stores/index.xhtml?faces-redirect=true" />
+				<p:spacer width="20" />
+				<p:commandLink value="Vender" style="color:#ffffff;" ajax="false"
+					action="/landing.xhtml?faces-redirect=true" />
+				<p:spacer width="20" />
+				<p:commandLink value="Ayuda" style="color:#ffffff;" />
+			</div>
+
+			<div class="w3-quarter w3-container">
+				<h:panelGroup rendered="#{userController.userLoggedIn == null}">
+					<p:spacer width="20" />
+					<p:commandLink id="registrarse" ajax="false"
+						actionListener="#{userController.createUser}"
+						action="/newUser.xhtml?faces-redirect=true">
+						<h:outputText value="Registrarse" style="color:#ffffff" />
+					</p:commandLink>
+					<p:spacer width="20" />
+					<p:commandLink id="ingresar" ajax="false"
+						action="/login.xhtml?faces-redirect=true">
+						<h:outputText value="Ingresar" style="color:#ffffff" />
+					</p:commandLink>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{userController.userLoggedIn != null}">
+					<p:commandLink id="myAccount" style="color:#ffffff;">
+						<i class="fa fa-fw fa-user fa-lg"></i>
+						<span>#{userController.userLoggedIn.name}</span>
+					</p:commandLink>
+					<p:tieredMenu overlay="true" trigger="myAccount" my="left top"
+						at="left bottom" style="width:250px" backLabel="Volver">
+						<p:menuitem value="Mi cuenta"
+							action="/pages/account/mySummary.xhtml?faces-redirect=true"
+							icon="fa fa-fw fa-suitcase" ajax="false" />
+						<p:menuitem value="Mis compras" 
+							action="/pages/account/purchases/myPurchaseOrders.xhtml?faces-redirect=true"
+							icon="fa fa-fw fa-credit-card" />
+						<p:menuitem value="Mis Pagos" 
+							action="/pages/account/mySummary.xhtml?faces-redirect=true"
+							icon="fa fa-fw fa-credit-card" />
+						<p:menuitem value="Mis Publicaciones" 
+							action="/pages/account/sales/myPosts.xhtml?faces-redirect=true"
+							icon="fa fa-fw fa-th-list" />
+						<p:menuitem value="Mis Pedidos" 
+							action="/pages/account/sales/mySalesOrders.xhtml?faces-redirect=true"
+							icon="fa fa-fw fa-th-list" />
+						<p:menuitem value="Logout" action="#{userController.doLogout}"
+							ajax="false" icon="fa fa-fw fa-sign-out" />
+					</p:tieredMenu>
+
+					<h:outputText value=" | " />
+					<p:commandLink id="myNotes" style="color:#ffffff;">
+						<i class="fa fa-fw fa-bell-o fa-lg"></i>
+					</p:commandLink>
+					<h:outputText value="  " />
+					<p:commandLink id="myWishes" style="color:#ffffff;">
+						<i class="fa fa-fw fa-heart-o fa-lg"></i>
+					</p:commandLink>
+					<h:outputText value=" | " />
+					<p:commandLink id="myCart" ajax="false" style="color:#ffffff;"
+						action="/pages/carts/index.xhtml?faces-redirect=true">
+						<i class="fa fa-fw fa-shopping-cart fa-lg"></i>
+					</p:commandLink>
+				</h:panelGroup>
+			</div>
+		</div>
+	</h:form>
+</ui:composition>

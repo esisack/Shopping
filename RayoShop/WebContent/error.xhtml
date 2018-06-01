@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="resources/templates/template.xhtml">
+
+	<ui:define name="content">
+		<h:form id="ItemEditForm">
+
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-12">
+					<h1>Descripcion de la publicacion</h1>
+					<p:separator />
+					<p:growl id="Success" />
+<p:galleria value="#{itemController.items}" var="image" panelWidth="500" panelHeight="313" >
+    <p:graphicImage library="images" name="#{image.picture}" title="#{image}"/>
+</p:galleria>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footer">
+	    Add your footer here or delete to use the default
+	</ui:define>
+</ui:composition>
+</html>

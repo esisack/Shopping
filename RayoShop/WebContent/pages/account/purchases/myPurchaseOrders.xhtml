@@ -1,0 +1,147 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Mis Pedidos</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formShow">
+			<p:growl id="messages" showDetail="true" />
+			<div class="w3-container datalist-noborder">
+				<div class="w3-row">
+					<div class="w3-third w3-container">
+						<h3>Mis pedidos</h3>
+					</div>
+					<div class="w3-third w3-container" style="margin-top: 20px;">
+						<p:inputText placeholder="Ingresar item" style="width:200px" />
+						<p:commandButton id="searchButton" icon="fa fa-fw fa-search" />
+					</div>
+					<div class="w3-third w3-container" style="margin-top: 20px;">
+						<p:menuButton value="Pedidos">
+							<p:menuitem value="Todos" icon="ui-icon-arrowrefresh-1-w" />
+							<p:menuitem value="Abiertos" icon="ui-icon-close" />
+							<p:menuitem value="Cancelados" icon="ui-icon-extlink" />
+						</p:menuButton>
+						<h:outputText value="  "></h:outputText>
+						<p:commandButton id="exportButton" icon="fa fa-fw fa-file-excel-o"
+							ajax="false" value="Exportar" process="@this"
+							action="/myorder.xhtml?faces-redirect=true">
+						</p:commandButton>
+					</div>
+				</div>
+				<p:separator />
+				<p:dataList id="order" value="#{orderController.ordersByUser}" var="order"
+					type="unordered" itemType="none" paginator="true"
+					paginatorPosition="bottom" rows="24">
+					<div class="w3-row w3-light-grey"
+						style="margin: 3px; font-size: 12px;">
+						<div class="w3-quarter w3-container">
+							<p align="justify">
+								<h:outputText value="Nro Pedido :" />
+								<h:outputText value="#{order.orderId}"
+									style="font-weight: bold;" />
+							</p>
+							<p>
+								<h:outputText value="Fecha Pedido :" />
+								<h:outputText value="#{order.orderDate}"
+									style="font-weight: bold;">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</p>
+						</div>
+						<div class="w3-half w3-container">
+							<p align="justify">
+								<h:outputText value="#{order.description}"
+									style="font-weight: bold;" />
+							</p>
+							<p>
+								<h:outputText value="Costo Envio :" />
+								<h:outputText value="#{order.shippingCost}"
+									style="font-weight: bold;">
+									<f:convertNumber type="currency" currencySymbol="$" />
+								</h:outputText>
+								<p:spacer />
+								<h:outputText value="Nro Items :" />
+								<h:outputText value="#{order.items}" style="font-weight: bold;" />
+								<p:spacer />
+								<h:outputText value="Total Pedido :" />
+								<h:outputText value="#{order.amount}" style="font-weight: bold;">
+									<f:convertNumber type="currency" currencySymbol="$" />
+								</h:outputText>
+							</p>
+						</div>
+						<div class="w3-quarter w3-container w3-center">
+							<p>
+								<h:outputText value="Estado del pedido :" />
+								<h:outputText value="ENTREGADO"
+									style="color:green;font-weight:bold;" />
+							</p>
+							<p>
+								<p:commandButton value="Archivar pedido"
+									style="background:#f1f1f1;color:#f2aa2d;width:80%;border:1px solid #d1cfcf;" />
+							</p>
+						</div>
+					</div>
+					<p:dataList id="orderDetail" value="#{order.ordersDetails}"
+						var="detail" type="unordered" itemType="none"
+						paginatorPosition="bottom" rows="4">
+						<div class="w3-row" style="margin: 3px; font-size: 12px;">
+							<div class="w3-container w3-twothird">
+								<div class="w3-row">
+									<div class="w3-quarter w3-container w3-center">
+										<p:graphicImage library="images" name="#{detail.item.firstPicture}"
+											style="width: 100px; height:100px; margin: auto;" />
+									</div>
+									<div class="w3-threequarter w3-container">
+										<p align="justify">
+											<p:commandLink>
+												<h:outputText value="#{detail.item.itemName}"
+													style="font-weight: bold;" />
+											</p:commandLink>
+											<br />
+											<h:outputText value="Vendido por:" />
+											<p:commandLink>
+												<h:outputText value="#{detail.item.company.businessName}" />
+											</p:commandLink>
+											<br />
+											<h:outputText
+												value="Devolucion permitida hasta el 15 de Febrero" />
+										</p>
+										<p>
+											<p:commandLink>
+												<h:outputText value="Devolver o reemplazar" />
+											</p:commandLink>
+											<h:outputText value="  |  " style="color:blue" />
+											<p:commandLink>
+												<h:outputText value="Calificar este producto" />
+											</p:commandLink>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="w3-container w3-third w3-center">
+								<p align="justify">
+									<h:outputText value="Items  Vendidos :" />
+									<h:outputText value="#{detail.quantity}" style="color:orange" />
+								</p>
+								<p align="justify">
+									<h:outputText value="Precio  Unitario  :" />
+									<h:outputText value="$ #{detail.unitPrice}"
+										style="color:orange" />
+								</p>
+								<p align="justify">
+									<h:outputText value="Totales parciales:" />
+									<h:outputText value="$ #{detail.unitPrice*detail.quantity}"
+										style="color:orange" />
+								</p>
+							</div>
+						</div>
+					</p:dataList>
+				</p:dataList>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

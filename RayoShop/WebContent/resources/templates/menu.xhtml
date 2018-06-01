@@ -1,0 +1,53 @@
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="menuform">
+		<p:menu toggleable="true" style="width:100%;border:none">
+			<p:menuitem id="summary" value="Resumen" icon="fa fa-dashboard"
+				outcome="/pages/account/mySummary" />
+			<p:menuitem id="reputation" value="Reputacion" icon="fa fa-star"
+				outcome="/pages/account/myReputation" />
+			<p:menuitem id="balance" value="Mi Cuenta" icon="fa fa-dashboard"
+				outcome="/pages/account/myBalance" />
+			<p:submenu id="myPurchases" label="Compras" expanded="false"
+				style="font-weight: bold;background:#f5f5f5;">
+				<p:menuitem id="myWhishlist" value="Favoritos" icon="fa fa-heart"
+					outcome="/pages/account/purchases/myWishList" />
+				<p:menuitem id="myQuestions" value="Consultas" icon="fa fa-comment"
+					outcome="/pages/account/purchases/myQuestions" />
+				<p:menuitem id="myPurchaseOrders" value="Compras"
+					icon="fa fa-shopping-cart"
+					outcome="/pages/account/purchases/myPurchaseOrders" />
+
+			</p:submenu>
+			<p:submenu id="mySales" label="Ventas" expanded="false"
+				style="font-weight: bold;background:#f5f5f5;" rendered="#{userController.enterprise}">
+				<p:menuitem id="myAnswers" value="Consultas" icon="fa fa-comments"
+					outcome="/pages/account/sales/myAnswers" />
+				<p:menuitem id="myProducts" value="Publicaciones"
+					icon="fa fa-newspaper-o" outcome="/pages/account/sales/myPosts" />
+				<p:menuitem id="mySaleOrders" value="Ventas" icon="fa fa-tag"
+					outcome="/pages/account/sales/mySaleOrders" />
+				<p:menuitem id="myCampaings" value="Campanas" icon="fa fa-inbox"
+					outcome="/pages/account/sales/myCampaigns" />
+			</p:submenu>
+			<p:submenu id="setup" label="Configuracion" expanded="false"
+				style="font-weight: bold;background:#f5f5f5;">
+				<p:menuitem id="myAccount" value="Datos de la cuenta"
+					icon="fa fa-bank" outcome="/pages/account/configuration/myCompanyData" 
+					ajax="false"/>
+				<p:menuitem id="mySecutity" value="Seguridad" icon="fa fa-lock"
+					outcome="/pages/account/configuration/mySecurity" />
+				<p:menuitem id="myMails" value="Mails" icon="fa fa-envelope"
+					outcome="/pages/account/configuration/myMailsConf" />
+				<p:menuitem id="myWarnings" value="Mis alarmas" icon="fa fa-warning"
+					outcome="/pages/account/configuration/myWarnings" />
+				<p:menuitem id="myWebsite" value="Mi WebSite" icon="fa fa-globe"
+					outcome="/pages/account/configuration/myWebSite" />
+			</p:submenu>
+			<p:menuitem id="Documents" value="Documentation" icon="fa fa-book" />
+		</p:menu>
+	</h:form>
+</ui:composition>

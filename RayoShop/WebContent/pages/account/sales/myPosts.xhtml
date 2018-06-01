@@ -1,0 +1,126 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Productos</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formShow">
+			<p:growl id="messages" showDetail="true" />
+			<div class="w3-container datalist-noborder">
+				<div class="w3-row">
+					<div class="w3-third w3-container">
+						<h3>Mis publicaciones</h3>
+					</div>
+					<div class="w3-third w3-container" style="margin-top: 20px;">
+						<p:inputText placeholder="Ingresar item" style="width:200px" />
+						<p:commandButton id="searchButton" icon="fa fa-fw fa-search" />
+					</div>
+					<div class="w3-third w3-container" style="margin-top: 20px;">
+						<p:menuButton value="Ordenar">
+							<p:menuitem value="Por Nombre" icon="ui-icon-arrowrefresh-1-w" />
+							<p:menuitem value="Stock" icon="ui-icon-close" />
+							<p:menuitem value="Precio" icon="ui-icon-extlink" />
+						</p:menuButton>
+						<h:outputText value="  "></h:outputText>
+						<p:commandButton id="exportButton" icon="fa fa-fw fa-file-excel-o"
+							ajax="false" value="Exportar" process="@this">
+						</p:commandButton>
+						<p:commandButton id="createButton" icon="fa fa-fw fa-plus"
+							ajax="false" value="Nuevo"
+							actionListener="#{itemController.prepareCreate}"
+							action="/pages/account/sales/post/index.xhtml?faces-redirect=true">
+							<f:setPropertyActionListener value="true"
+								target="#{itemController.itemCreate}" />
+						</p:commandButton>
+					</div>
+				</div>
+				<p:separator />
+				<div class="w3-row" style="font-size: 12px;">
+					<div class="w3-half w3-container"></div>
+					<div class="w3-half w3-container">
+						<div class="w3-row">
+							<div class="w3-quarter w3-container">
+								<p>
+									<h:outputText value="Stock" />
+								</p>
+							</div>
+							<div class="w3-quarter w3-container">
+								<p>
+									<h:outputText value="Precio Lista" />
+								</p>
+							</div>
+							<div class="w3-quarter w3-container">
+								<p>
+									<h:outputText value="Precio Oferta" />
+								</p>
+							</div>
+							<div class="w3-quarter w3-container"></div>
+						</div>
+					</div>
+				</div>
+				<p:dataList id="dataList" value="#{itemController.itemsByCompany}" var="item"
+					type="unordered" itemType="none" paginator="true"
+					paginatorPosition="bottom" rows="24" emptyMessage="Esta empresa no posee publicaciones">
+					<div class="w3-row" style="margin: 3px; font-size: 12px;">
+						<div class="w3-half w3-container">
+							<div class="w3-row">
+								<div class="w3-third w3-container">
+									<p:graphicImage value="/Pictures/#{item.firstPicture}"
+										style="width: 100px; height:100px; margin: auto;" />
+								</div>
+								<div class="w3-twothird w3-container">
+									<p align="justify">
+										<h:outputText value="#{item.itemName}"
+											style="font-weight: bold;" />
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="w3-half w3-container">
+							<div class="w3-row">
+								<div class="w3-quarter w3-container">
+									<p>
+										<h:outputText value="#{item.stock}" />
+									</p>
+								</div>
+								<div class="w3-quarter w3-container">
+									<p>
+										<h:outputText value="#{item.retailPrice}" />
+									</p>
+								</div>
+								<div class="w3-quarter w3-container">
+									<p>
+										<h:outputText value="#{item.channelPrice}" />
+									</p>
+								</div>
+								<div class="w3-quarter w3-container">
+									<p>
+										<p:commandButton id="editButton" ajax="false"
+											icon="fa fa-fw fa-edit"
+											action="/pages/account/sales/post/index.xhtml?faces-redirect=true">
+											<f:setPropertyActionListener value="#{item}"
+												target="#{itemController.selected}" />
+											<f:setPropertyActionListener value="false"
+												target="#{itemController.itemCreate}" />
+										</p:commandButton>
+										<p:commandButton id="deleteButton" icon="fa fa-fw fa-remove"
+											actionListener="#{itemController.delete}">
+											<p:confirm header="#{myBundle.ConfirmationHeader}"
+												message="#{myBundle.ConfirmDeleteMessage}"
+												icon="ui-icon-alert" />
+										</p:commandButton>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</p:dataList>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>JSF PrimeFaces File Upload Example</title>
+</h:head>
+<h:body>
+	<h:form id="fileUpoad" prependId="false" enctype="multipart/form-data">
+
+
+
+		<!-- File Upload with  mode="advanced". multiple files can be uploaded. upload button  -->
+
+		<h:outputLabel for="fileIdPhoto" value="Upload Your Photo:" />
+
+		<p:commandButton value="Submit" onclick="$('#fileIdPhoto').click();" />
+
+		<p:fileUpload id="fileIdPhoto"
+			fileUploadListener="#{companyController.uploadPhoto}" mode="simple"
+			dragDropSupport="false" update="messages image" sizeLimit="10000000"
+			allowTypes="/(\.|\/)(gif|jpe?g|zip)$/" />
+
+		<p:messages id="messages" autoUpdate="true" closable="true" />
+
+		<p:separator />
+		<p:commandLink onclick="$('#fileIdPhoto').click();">
+			<p:graphicImage id="image" library="images" name="img_avatar2.png"
+				style="height:110px;width:120px;" />
+		</p:commandLink>
+
+
+	</h:form>
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,312 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+	<ui:define name="scroll">
+		<img src="/RayoCompras/resources/images/turismo.jpg" />
+	</ui:define>
+
+	<ui:define name="navBar">
+		<div class="w3-hide-small w3-border w3-row w3-white"
+			style="max-height: 54px; overflow: hidden; line-height: 2.3em;">
+			<div class="w3-container  w3-quarter w3-text-teal"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-chevron-down"></i> Categorías
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-green"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-check-square" style="max-height: 54px;"></i> Compra
+					Segura
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-blue"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-credit-card"></i> Pagás Online
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-purple"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-truck"></i> Envío 24hs <sup>max</sup>
+				</h2>
+			</div>
+		</div>
+
+	</ui:define>
+
+	<ui:define name="menu" />
+
+	<ui:define name="content">
+		<h:form id="ItemEditForm">
+			<!-- Div main -->
+			<!--      Content        -->
+
+			<div class="w3-col w3-padding-48 w3-light-grey">
+				<div class="w3-col w3-center w3-left" style="width: 4%">
+					<p></p>
+				</div>
+				<div class="w3-col w3-center  w3-right" style="width: 4%">
+					<p></p>
+				</div>
+
+				<!-- Div main -->
+				<div
+					class="w3-rest w3-container w3-padding w3-margin-bottom w3-center">
+
+
+					<!-- Categorias Cards  1,2,3,4 -->
+					<div class="w3-row-padding w3-text-dark-gray"
+						style="width: 95%; margin: auto;">
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/dest1.jpg" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Viajes
+										de Semana Santa</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$11.300</div>
+								</div>
+								<div class="bcardtext">Contamos con varios destinos para
+									disfrutar en familia.</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Marco Antonio Tours</div>
+							</div>
+						</div>
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/dest2.jpg" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Asia,
+										Africa y Pacífico</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$39.999</div>
+								</div>
+								<div class="bcardtext">Lugares inolvidables a un precio
+									increible. No dejes pasar esta oportunidad de recorrer el
+									mundo.</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Les Amis</div>
+							</div>
+						</div>
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/dest3.jpg" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Sueños
+										del caribe</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$36.860</div>
+								</div>
+								<div class="bcardtext">Recorré las mejores playas del
+									Caribe en un completo tour marino ideal para disfrutar en
+									pareja o amigos.</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Pezzati</div>
+							</div>
+						</div>
+						<div class="w3-quarter">
+							<div class="w3-card-4">
+								<div class="w3-display-container w3-text-white">
+									<img src="/RayoCompras/resources/images/dest4.jpg" />
+									<div
+										class="w3-large w3-display-topmiddle w3-padding textsshadow bcardtitle">Vacaciones
+										de Invierno</div>
+									<div
+										class="w3-small w3-display-bottomleft w3-padding w3-padding-32 textsshadow">Desde</div>
+									<div
+										class="w3-xlarge w3-display-bottomleft w3-padding textsshadow">$14.025</div>
+								</div>
+								<div class="bcardtext">Conocé la magia del invierno en
+									familia. Aero sillas, pistas de sky, cabañas y todo para vivir
+									una experiencia sin igual</div>
+								<div
+									class="w3-padding-small w3-right-align w3-text-gray w3-tiny">Empresa:
+									Pezzati</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!-- First line of products -->
+
+					<h2 class="titular">Los destinos más buscados</h2>
+					<div class="owl-two owl-carousel">
+
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d1.jpg" />
+							</div>
+							<div class="indexcardtitle">Puerto Iguazú</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />5 días / 4 noches <br />desde <span
+									class="price">$6500</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d2.jpg" />
+							</div>
+							<div class="indexcardtitle">El Calafate</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />4 días / 3 noches <br />desde <span
+									class="price">$6406</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d3.jpg" />
+							</div>
+							<div class="indexcardtitle">Búzios</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />6 días / 5 noches <br />desde <span
+									class="price">$10.450</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d4.jpg" />
+							</div>
+							<div class="indexcardtitle">Natal</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />8 días / 7 noches <br />desde <span
+									class="price">$16.084</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d5.jpg" />
+							</div>
+							<div class="indexcardtitle">Punta Cana</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />8 días / 7 noches <br />desde <span
+									class="price">$24.964</span>
+							</div>
+						</div>
+
+					</div>
+
+					<h2 class="titular">
+						<a href="#">Recomendados</a>
+					</h2>
+
+					<!-- Second line of products -->
+					<div class="owl-two owl-carousel">
+
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d6.jpg" />
+							</div>
+							<div class="indexcardtitle">Orlando</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />5 días / 4 noches <br />desde <span
+									class="price">$23.451</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d7.jpg" />
+							</div>
+							<div class="indexcardtitle">Rio de Janeiro</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />5 días / 4 noches <br />desde <span
+									class="price">$11.700</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d8.jpg" />
+							</div>
+							<div class="indexcardtitle">Cancún</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />5 días / 4 noches <br />desde <span
+									class="price">$25.978</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d9.jpg" />
+							</div>
+							<div class="indexcardtitle">Playa del Carmen</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />5 días / 4 noches <br />desde <span
+									class="price">$24.727</span>
+							</div>
+						</div>
+						<div class="pcard">
+							<div class="w3-display-container w3-text-white">
+								<img src="/RayoCompras/resources/images/d10.jpg" />
+							</div>
+							<div class="indexcardtitle">Miami Beach</div>
+							<div class="indexcardtext">
+								Vuelo + Hotel <br />5 días / 4 noches <br />desde <span
+									class="price">$20.717</span>
+							</div>
+						</div>
+
+					</div>
+
+					<p class="titular">
+						<a href="#">Ver todos</a>
+					</p>
+
+					<!-- Third line of products -->
+
+					<h2 class="titular">Empresas</h2>
+					<div class="owl-two owl-carousel w3-margin-bottom">
+
+						<img src="/RayoCompras/resources/images/emp-ativiajes.jpg" /> <img
+							src="/RayoCompras/resources/images/emp-lecfer.jpg" /> <img src="/RayoCompras/resources/images/emp-lesamis.jpg" />
+						<img src="/RayoCompras/resources/images/emp-practur.jpg" /> <img
+							src="/RayoCompras/resources/images/emp-pezatti.jpg" /> <img
+							src="/RayoCompras/resources/images/emp-travelr.jpg" />
+
+					</div>
+
+					<p class="titular">
+						<a href="#">Ver todas</a>
+					</p>
+
+
+					<div class="w3-row w3-white w3-hide-small">
+						<div class="w3-col w3-padding w3-text-blue" style="width: 150px">
+							<p>Medios de Pago</p>
+						</div>
+						<div class="w3-rest owl-three owl-carousel w3-cell-middle"
+							style="min-height: 62px;">
+                       	 	<img src="/RayoCompras/resources/images/t-visa-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-masterc-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-american-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-naranja-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-cabal-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-dinersc-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-credimas-c.png" />
+                        	<img src="/RayoCompras/resources/images/t-visa-d.png" />
+                        	<img src="/RayoCompras/resources/images/t-maestro-d.png" />
+                        	<img src="/RayoCompras/resources/images/t-cabal-d.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="resources/templates/template.xhtml">
+	<ui:define name="scroll">
+		<div  class="owl-one owl-carousel owl-theme">
+			<div>
+				<img src="resources/images/01.jpg" />
+			</div>
+			<div>
+				<img src="resources/images/02.jpg" />
+			</div>
+			<div>
+				<img src="resources/images/03.jpg" />
+			</div>
+		</div>
+	</ui:define>
+
+	<ui:define name="navBar">
+		<div class="w3-hide-small w3-border w3-row w3-white"
+			style="max-height: 54px; overflow: hidden; line-height: 2.3em;">
+			<div class="w3-container  w3-quarter w3-text-teal"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-chevron-down"></i> Categorías
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-green"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-check-square" style="max-height: 54px;"></i> Compra
+					Segura
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-blue"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-credit-card"></i> Pagás Online
+				</h2>
+			</div>
+			<div class="w3-container w3-border-left w3-quarter w3-text-purple"
+				style="max-height: 54px;">
+				<h2>
+					<i class="fa fa-truck"></i> Envío 24hs <sup>max</sup>
+				</h2>
+			</div>
+		</div>
+
+	</ui:define>
+
+	<ui:define name="menu" />
+
+	<ui:define name="content">
+		<h:form id="ItemEditForm">
+			<!-- Div main -->
+			<div class="w3-container w3-center">
+				<h3 class="w3-panel w3-text-gray">¡Los mejores productos cerca
+					tuyo!</h3>
+
+				<div class="w3-row-padding w3-text-dark-gray">
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat1.jpg" alt="Telefonos celulares" />
+							<div class="w3-display-bottommiddle w3-container">
+								<p:commandLink value="Telefonos Celulares"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="30"
+										target="#{itemController.categoryId}" />
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat2.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Electrodomesticos"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="35"
+										target="#{itemController.categoryId}" />
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat3.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Moda y Accesorios"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="28"
+										target="#{itemController.categoryId}" />								
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat4.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Vehiculos y Repuestos"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="49"
+										target="#{itemController.categoryId}" />								
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="w3-row-padding w3-text-dark-gray">
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat5.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Herramientas Electricas"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="37"
+										target="#{itemController.categoryId}" />
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat6.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Jugueteria y Regaleria"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="43"
+										target="#{itemController.categoryId}" />
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat7.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Servicios en Salta"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="46"
+										target="#{itemController.categoryId}" />
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="w3-quarter">
+						<div class="card-content">
+							<img src="resources/images/cat8.jpg" alt="Norway" />
+							<div>
+								<p:commandLink value="Viajes y Turismo"
+									action="/pages/items/index.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="1"
+										target="#{itemController.categoryId}" />
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="titular"><i class="fa fa-star w3-text-orange"></i> Ofertas</h2>
+                <div class="owl-two owl-carousel">
+
+                    <div class="pcard"><img src="resources/images/p1.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p2.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p3.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p4.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p5.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p6.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p1.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p2.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p3.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p4.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p5.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p6.png" />
+                        <h3>$1.200</h3></div>
+
+                </div>
+				
+				<p class="titular"><a href="#">Ver todos</a></p>
+
+                <!-- Second line of products -->
+
+                <h2 class="titular"><i class="fa fa-snowflake-o w3-text-blue"></i> Lo mejor de la temporada !</h2>
+
+                <div class="owl-two owl-carousel">
+
+                    <div class="pcard"><img src="resources/images/p7.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p8.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p9.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p10.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p11.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p12.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p7.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p8.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p9.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p10.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p11.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p12.png" />
+                        <h3>$1.200</h3></div>
+
+                </div>
+				
+				<p class="titular"><a href="#">Ver todos</a></p>
+
+                <!-- Third line of products -->
+
+                <h2 class="titular"><i class="fa fa-home w3-text-red"></i> Destacados cerca tuyo </h2>
+                <div class="owl-two owl-carousel w3-margin-bottom">
+
+                    <div class="pcard"><img src="resources/images/p13.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p14.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p15.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p16.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p17.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p18.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p13.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p14.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p15.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p16.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p17.png" />
+                        <h3>$1.200</h3></div>
+                    <div class="pcard"><img src="resources/images/p16.png" />
+                        <h3>$1.200</h3></div>
+
+                </div>
+				
+				<p class="titular"><a href="#">Ver todos</a></p>
+
+                <h2 class="titular"><i class="fa fa-bookmark w3-text-deep-orange"></i> Comercios oficiales </h2>
+                <div class="owl-three owl-carousel w3-margin-bottom">
+
+                    <img src="resources/images/com-balodin.jpg" />
+                    <img src="resources/images/com-dycar.jpg" />
+                    <img src="resources/images/com-laiston.jpg" />
+                    <img src="resources/images/com-superbrico.jpg" />
+                    <img src="resources/images/com-ideal.jpg" />
+                    <img src="resources/images/com-marcchagall.jpg" />
+
+                </div>
+				
+				<p class="titular"><a href="#">Ver todos los comercios</a></p>
+
+                <div class="w3-row w3-white w3-hide-small">
+                    <div class="w3-col w3-padding w3-text-blue" style="width:150px">
+                        <p>Medios de Pago</p>
+                    </div>
+                    <div class="w3-rest owl-three owl-carousel w3-cell-middle" style="min-height: 62px;">
+
+                        <img src="resources/images/t-visa-c.png" />
+                        <img src="resources/images/t-masterc-c.png" />
+                        <img src="resources/images/t-american-c.png" />
+                        <img src="resources/images/t-naranja-c.png" />
+                        <img src="resources/images/t-cabal-c.png" />
+                        <img src="resources/images/t-dinersc-c.png" />
+                        <img src="resources/images/t-credimas-c.png" />
+                        <img src="resources/images/t-visa-d.png" />
+                        <img src="resources/images/t-maestro-d.png" />
+                        <img src="resources/images/t-cabal-d.png" />
+                    </div>
+                </div>				
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

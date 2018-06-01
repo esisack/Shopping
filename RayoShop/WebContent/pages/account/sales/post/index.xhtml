@@ -1,0 +1,311 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Producto</ui:define>
+	<ui:define name="menu" />
+	<ui:define name="content">
+		<h:form id="itemEditForm">
+			<p:growl id="Success" />
+			<div class="w3-container"
+				style="max-width: 1024px; margin-left: auto; margin-right: auto">
+				<div class="w3-cell-row" style="height: 40px; margin-top: 15px">
+					<div class="w3-container w3-cell w3-left" style="padding: 5px;">
+						<h:outputText value="Datos de la publicacion"
+							style="font-size:15px;font-weight:bold;" />
+					</div>
+					<div class="w3-container w3-cell w3-right">
+						<h:panelGroup id="itemPanel">
+							<h:inputHidden value="#{itemController.selected.itemId}" />
+							<p:commandButton id="create" value="Publicar"
+								actionListener="#{itemController.prepareCreate}"
+								icon="fa fa-fw fa-plus" rendered="#{!itemController.itemCreate}"
+								process="@this" update="@(form:itemEditForm)">
+								<f:setPropertyActionListener value="true"
+									target="#{itemController.itemCreate}" />
+							</p:commandButton>
+							<p:commandButton id="merge" value="Guardar cambios"
+								actionListener="#{itemController.saveItem}" icon="fa fa-fw fa-save"
+								 process="@this"
+								update="@(form:itemEditForm)">
+							</p:commandButton>
+
+							<p:commandButton id="cancel" value="Canelar cambios"
+								icon="fa fa-fw fa-undo" process="@this"
+								update="@(form:itemEditForm)"
+								action="/pages/accounts/sales/myPosts.xhtml?faces-redirect=true">
+								<f:setPropertyActionListener value="true"
+									target="#{itemController.itemCreate}" />
+							</p:commandButton>
+						</h:panelGroup>
+					</div>
+				</div>
+				<p:separator />
+				<div class="ui-fluid">
+					<p:panelGrid columns="4"
+						columnClasses="ui-grid-col-2,ui-grid-col-4, ui-grid-col-2,ui-grid-col-4"
+						styleClass="form-group ui-panelgrid-blank" layout="grid">
+
+						<h:outputLabel value="Departamento" />
+
+						<p:selectOneMenu id="itemType"
+							value="#{itemController.selected.itemType}"
+							converter="selectOneMenuConverter">
+							<f:selectItem itemLabel="Seleccionar" itemValue="" />
+							<f:selectItems value="#{itemTypeController.items}" var="itemType"
+								itemValue="#{itemType}" itemLabel="#{itemType.itemTypeName}" />
+						</p:selectOneMenu>
+						<h:outputLabel value="Categoria" />
+
+						<p:selectOneMenu id="category"
+							value="#{itemController.selected.category}" required="true"
+							converter="selectOneMenuConverter">
+							<f:selectItem itemLabel="Seleccionar" itemValue="" />
+							<f:selectItems value="#{categoryController.items}"
+								var="categoryItem" itemValue="#{categoryItem}"
+								itemLabel="#{categoryItem.categoryName.toString()}" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+
+					<p:panelGrid columns="2"
+						columnClasses="ui-grid-col-2,ui-grid-col-10"
+						styleClass="form-group ui-panelgrid-blank" layout="grid">
+						<h:outputLabel value="Publicación" />
+						<p:inputText id="itemName"
+							value="#{itemController.selected.itemName}"
+							placeholder="Ingresar titulo de publicacion" />
+
+					</p:panelGrid>
+
+					<div class="w3-row w3-container">
+						<div class="w3-col l2 m2 s12">
+							<h:outputLabel value="Imagenes" />
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="firstImage"
+									value="/Pictures/#{itemController.selected.firstPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="secondImage"
+									value="/Pictures/#{itemController.selected.secondPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="thirdImage"
+									value="/Pictures/#{itemController.selected.thirdPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="fourthImage"
+									value="/Pictures/#{itemController.selected.fourthPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="fifthImage"
+									value="/Pictures/#{itemController.selected.fifthPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w3-row w3-container">
+						<div class="w3-col l2 m2 s12">
+							<h:outputLabel value="Imagenes" />
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="sixthImage"
+									value="/Pictures/#{itemController.selected.sixthPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="sevenImage"
+									value="/Pictures/#{itemController.selected.seventhPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="eighthImage"
+									value="/Pictures/#{itemController.selected.eighthPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="ninethImage"
+									value="/Pictures/#{itemController.selected.ninethPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+						<div class="w3-col l2 m2 s12">
+							<div class="container">
+								<p:graphicImage id="tenthImage"
+									value="/Pictures/#{itemController.selected.tenthPicture}"
+									style="width:100%;height:100%; padding:5px;" />
+								<div class="centered">
+									<p:fileUpload
+										fileUploadListener="#{itemController.uploadPhoto}"
+										mode="advanced" dragDropSupport="false" update="firstImage"
+										sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|zip)$/"
+										auto="true" label="" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<p:panelGrid columns="2"
+						columnClasses="ui-grid-col-2,ui-grid-col-10"
+						styleClass="form-group ui-panelgrid-blank" layout="grid">
+						<h:outputLabel value="Descripcion" />
+						<p:inputTextarea id="description" rows="6"
+							value="#{itemController.selected.description}"
+							placeholder="Describa el producto o servicio en 250 caracteres" />
+					</p:panelGrid>
+
+					<p:panelGrid columns="4"
+						columnClasses="ui-grid-col-2,ui-grid-col-4, ui-grid-col-2,ui-grid-col-4"
+						styleClass="form-group ui-panelgrid-blank" layout="grid">
+
+						<h:outputLabel value="Modelo" />
+						<p:selectOneMenu id="model"
+							value="#{itemController.selected.model}"
+							converter="selectOneMenuConverter">
+							<f:selectItem itemLabel="Seleccionar" itemValue="" />
+							<f:selectItems value="#{modelController.items}" var="model"
+								itemValue="#{model}" itemLabel="#{model.modelName}" />
+						</p:selectOneMenu>
+						<h:outputLabel value="Compania" />
+
+						<p:selectOneMenu id="company"
+							value="#{itemController.selected.company}"
+							converter="selectOneMenuConverter">
+							<f:selectItem itemValue="" itemLabel="Seleccionar" />
+							<f:selectItems value="#{companyController.items}" var="company"
+								itemValue="#{company}" itemLabel="#{company.fiscalName}" />
+						</p:selectOneMenu>
+
+						<h:outputLabel value="Codigo del Producto" />
+
+						<p:inputText id="itemCode"
+							value="#{itemController.selected.itemCode}"
+							placeholder="Ingresar el codigo del producto" />
+						<h:outputLabel value="Stock Vigente" />
+
+						<p:spinner id="stock" value="#{itemController.selected.stock}"
+							min="0" />
+
+						<h:outputLabel value="Precio de Lista" />
+
+						<p:spinner id="retailPrice04"
+							value="#{itemController.selected.retailPrice}" prefix="$" min="0" />
+							
+						<h:outputLabel value="Precio Bonificado" />
+
+						<p:spinner id="channelPrice04"
+							value="#{itemController.selected.channelPrice}" prefix="$"
+							min="0" />
+						<h:outputLabel value="Producto en oferta" />
+
+						<p:selectOneMenu id="publish"
+							value="#{itemController.selected.publish}">
+							<f:selectItem itemValue="S" itemLabel="Si" />
+							<f:selectItem itemValue="N" itemLabel="No" />
+						</p:selectOneMenu>
+						<h:outputLabel value="Publicacion activa" />
+						<p:selectOneMenu id="enabled"
+							value="#{itemController.selected.enabled}">
+							<f:selectItem itemValue="S" itemLabel="Si" />
+							<f:selectItem itemValue="N" itemLabel="No" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

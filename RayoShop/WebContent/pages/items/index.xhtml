@@ -1,0 +1,246 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Productos</ui:define>
+
+	<ui:define name="menu">
+		<div class="w3-container" style="padding: 5px;">
+			<h3>Refine su busqueda</h3>
+		</div>
+		<p:separator />
+		<div class="w3-container">
+			<h:outputText value="Tipo Cat" />
+			<hr style="margin: 5px" />
+			<p:repeat var="type" value="#{itemTypeController.items}">
+				<p:commandLink>
+					<h:outputText value="#{type.itemTypeName}"
+						style="color:gray; font-weight: bold;font-size:12px;" />
+				</p:commandLink>
+				<br />
+			</p:repeat>
+			<br /> <br />
+		</div>
+
+		<div class="w3-container datalist-noborder">
+			<h:outputText value="Categoria" />
+			<hr style="margin: 5px" />
+			<p:repeat var="category" value="#{categoryController.items}">
+				<p:commandLink>
+					<h:outputText value="#{category.categoryName}"
+						style="color:gray; font-weight: bold;font-size:12px;" />
+				</p:commandLink>
+				<br />
+			</p:repeat>
+			<br /> <br />
+		</div>
+
+		<div class="w3-container datalist-noborder">
+			<h:outputText value="Marcas" />
+			<hr style="margin: 5px" />
+			<p:repeat value="#{makeController.items}" var="make" size="9">
+				<div class="w3-row" style="margin: 3px">
+					<p:commandLink>
+						<h:outputText value="#{make.makeName}"
+							style="color:gray; font-weight: bold;font-size:12px;" />
+					</p:commandLink>
+				</div>
+				<br />
+			</p:repeat>
+			<br /> <br />
+		</div>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="formShow">
+			<p:growl id="messages" showDetail="true" />
+			<div class="w3-row">
+				<div class="w3-twothird w3-container">
+					<H6>Productos encontrados</H6>
+					<p:commandLink value="Volver al listado >" ajax="false">
+						<f:setPropertyActionListener value="#{null}"
+							target="#{itemController.categoryId}" />
+					</p:commandLink>
+					<p:spacer />
+					<p:commandLink value="Categoria"
+						rendered="#{itemController.categoryId != null}" />
+				</div>
+				<div class="w3-third w3-container w3-right"
+					style="margin-top: 20px;">
+					<p:menuButton value="Ordenar">
+						<p:menuitem value="Mas destacados" />
+						<p:menuitem value="Menor precio" />
+						<p:menuitem value="Mayor precio" />
+					</p:menuButton>
+					<h:outputText value="  "></h:outputText>
+					<p:commandButton id="listButton" process="@this"
+						update="@(form:formShow)" icon="fa fa-fw fa-bars">
+						<f:setPropertyActionListener value="list"
+							target="#{itemController.view}"></f:setPropertyActionListener>
+					</p:commandButton>
+					<p:commandButton id="gridButton" process="@this"
+						update="@(form:formShow)" icon="fa fa-fw fa-th-large">
+						<f:setPropertyActionListener value="grid"
+							target="#{itemController.view}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</div>
+			</div>
+			<p:separator />
+			<div class="w3-container">
+				<p:dataList id="itemList" value="#{itemController.itemsByCategory}"
+					var="item" type="unordered" itemType="none"
+					paginatorPosition="bottom" paginator="true" rows="24"
+					rendered="#{itemController.view != 'grid'}">
+					<div id="general" class="w3-row"
+						style="margin: 3px; font-size: 18px;">
+						<div class="w3-quarter w3-container w3-center">
+							<p:commandLink ajax="false"
+								action="/pages/items/view.xhtml?faces-redirect=true">
+								<p:graphicImage value="/Pictures/#{item.firstPicture}"
+									style="max-width: 160px; max-height:160px; margin: 24px;" />
+								<f:setPropertyActionListener value="#{item}"
+									target="#{itemController.selected}" />
+							</p:commandLink>
+						</div>
+						<div class="w3-threequarter w3-container">
+							<div id="heartLink" class="w3-container w3-right"
+								style="height: 24px; padding: 0; margin: 0px 20px 0px 20px;">
+								<p:commandLink ajax="false"
+									actionListener="#{wishListController.canIAddWish}"
+									action="#{wishListController.canIAddWish}">
+									<i class="fa fa-heart-o" />
+									<f:setPropertyActionListener value="#{item}"
+										target="#{itemController.selected}" />
+									<f:setPropertyActionListener
+										value="/pages/items/index.xhtml?faces-redirect=true"
+										target="#{navigationController.returnPage}" />
+								</p:commandLink>
+							</div>
+							<div class="w3-container" style="padding: 0; margin: 0;">
+								<div id="title" class="w3-container">
+									<p:commandLink ajax="false"
+										action="/pages/items/view.xhtml?faces-redirect=true">
+										<h:outputText value="#{item.itemName}" styleClass="postTitle" />
+										<f:setPropertyActionListener value="#{item}"
+											target="#{itemController.selected}" />
+									</p:commandLink>
+								</div>
+								<div id="supplier" class="w3-container">
+									<p:commandLink>
+										<h:outputText value=" por #{item.company.businessName}"
+											style="color:gray;font-size:10px" />
+									</p:commandLink>
+								</div>
+								<div class="w3-row" style="margin: 0px; font-size: 12px;">
+									<div class="w3-half w3-container">
+										<h:outputText value="$ #{item.retailPrice}"
+											style="color:gray; text-decoration:line-through"
+											rendered="#{item.channelPrice lt item.retailPrice}" />
+										<br />
+										<h:outputText value="$ #{item.channelPrice}"
+											style="font-weight:bold" />
+										<br /> <i class="fa fa-truck fa-lg"
+											data-fa-transform="rotate-90" />
+										<h:outputText value="Envio Gratis" />
+										<br />
+										<h:outputText value="En Stock" style="color:green" />
+									</div>
+									<div class="w3-half w3-container">
+										<p>
+											<p:rating stars="5" readonly="true" />
+										</p>
+
+										<h:outputText value="214 Articulos vendidos" />
+										<br />
+										<p:commandButton id="saveItem" value="Agregar al carrito"
+											ajax="false" icon="fa fa-cart-plus" style="width:60%;"
+											actionListener="#{shopCartController.createNewLine}"
+											action="/pages/cart/index.xhtml?faces-redirect=true" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</p:dataList>
+			</div>
+
+			<p:dataGrid var="item" value="#{itemController.itemsByCategory}"
+				columns="4" layout="grid" rows="45" paginator="true"
+				paginatorPosition="bottom" id="gridView"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rendered="#{itemController.view == 'grid'}">
+				<div class="w3-container w3-center" style="padding: 1px">
+
+					<div class="w3-card" style="padding: 0px; height: 456px;">
+
+						<div class="w3-container w3-right"
+							style="height: 20px; padding: 0; margin: 0px 20px 0px 15px;">
+							<p:commandLink ajax="false"
+								actionListener="#{wishListController.canIAddWish}"
+								action="#{wishListController.canIAddWish}">
+								<i class="fa fa-heart-o" />
+								<f:setPropertyActionListener value="#{item}"
+									target="#{itemController.selected}" />
+								<f:setPropertyActionListener
+									value="/pages/items/index.xhtml?faces-redirect=true"
+									target="#{navigationController.returnPage}"></f:setPropertyActionListener>
+
+							</p:commandLink>
+						</div>
+						<div class="w3-container w3-center"
+							style="width: 200px; height: 202px;">
+							<p:commandLink ajax="false"
+								action="/pages/items/view.xhtml?faces-redirect=true">
+								<f:setPropertyActionListener value="#{item}"
+									target="#{itemController.selected}" />
+								<p:graphicImage value="/Pictures/#{item.firstPicture}"
+									style="max-width: 200px;max-height:200px;" />
+							</p:commandLink>
+						</div>
+						<p:separator />
+						<div class="w3-container w3-center" style="font-size: 12px">
+							<div class="w3-container w3-center" style="min-height: 40px;">
+								<p:commandLink ajax="false"
+									action="/pages/items/view.xhtml?faces-redirect=true">
+									<f:setPropertyActionListener value="#{item}"
+										target="#{itemController.selected}" />
+									<h:outputText value="#{item.itemName}"
+										style="font-weight: bold" />
+								</p:commandLink>
+							</div>
+
+							<div class="w3-container w3-center" style="height: 20px;">
+								<p:commandLink>
+									<h:outputText value=" por #{item.company.businessName}"
+										style="color:gray;font-size:10px" />
+								</p:commandLink>
+							</div>
+							<div class="w3-container w3-center" style="height: 30px;">
+								<p>
+									<h:outputText value="$ #{item.retailPrice}"
+										style="color:gray; text-decoration:line-through"
+										rendered="#{item.channelPrice lt item.retailPrice}" />
+								</p>
+								<p>
+									<h:outputText value="$ #{item.channelPrice}"
+										style="font-weight:bold;" />
+								</p>
+							</div>
+							<div class="w3-container w3-center" style="height: 30px;">
+								<p>
+									<p:rating value="4" readonly="true" style="height:10px;" />
+								</p>
+								<p>
+									<h:outputText value="10 ventas" />
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</p:dataGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

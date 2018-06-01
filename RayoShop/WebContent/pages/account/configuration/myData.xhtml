@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Mis Datos</ui:define>
+
+	<ui:define name="content">
+		<h:form id="form">
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-12">
+								<div class="ui-g-12 ui-g-8">
+					<div class="card card-w-title">
+						<h1>Datos de la Cuenta</h1>
+						<p:separator/>
+						<p:panelGrid columns="1"
+							styleClass="form-group ui-panelgrid-blank" layout="grid">
+							<p:outputLabel value="Usuario" for="userName" />
+							<p:inputText id="userName"
+								value="#{customerController.selected.user.name}"
+								placeholder="Nombre de usuario" />
+							<p:outputLabel value="Usuario" for="userMail" />
+							<p:inputText id="userMail"
+								value="#{customerController.selected.user.mail}"
+								placeholder="Email" />
+							<p:outputLabel value="Usuario" for="userPassword" />
+							<p:inputText id="userPassword"
+								value="#{customerController.selected.user.password}"
+								placeholder="Contraseña" />
+						</p:panelGrid>
+					</div>
+
+
+					<div class="card card-w-title">
+						<h1>Datos del negocio</h1>
+						<p:separator/>
+						<p:panelGrid columns="1"
+							styleClass="form-group ui-panelgrid-blank" layout="grid">
+
+							<p:outputLabel value="Tipo Doc." for="documentType" />
+							<p:selectOneMenu id="documentType" value="#{customerController.selected.documentType}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="DU" itemValue="D" />
+								<f:selectItem itemLabel="Cuit" itemValue="C" />
+								<f:selectItem itemLabel="Otro" itemValue="O" />
+							</p:selectOneMenu>
+							<p:outputLabel value="Documento" for="document" />
+							<p:inputText id="document"
+								value="#{customerController.selected.document}"
+								placeholder="Documento" />
+
+							<p:outputLabel value="Apellido" for="lastName" />
+							<p:inputText id="lastName"
+								value="#{customerController.selected.lastName}"
+								placeholder="Apellido" />
+							<p:outputLabel value="Nombre" for="firstName" />
+							<p:inputText id="firstName"
+								value="#{customerController.selected.firstName}"
+								placeholder="Nombres" />
+
+							<p:outputLabel value="Telefono" for="phone" />
+							<p:inputText id="phone"
+								value="#{customerController.selected.phone}"
+								placeholder="Telefono" />
+							<p:outputLabel value="Celular" for="cellPhone" />
+							<p:inputText id="cellPhone"
+								value="#{customerController.selected.cellPhone}"
+								placeholder="Nombres" />
+
+
+						</p:panelGrid>
+						
+					</div>
+
+					<div class="card card-w-title">
+						<h1>Domicilos</h1>
+						<p:dataList value="#{customerController.selected.addresses}" var="item"
+								type="unordered" itemType="none" paginator="true"  paginatorPosition="bottom">
+									<p:panelGrid columns="3" layout="grid" styleClass="ui-noborder" >
+									<h:outputText value="#{item.primary}"
+												style="font-weight: bold" />
+									
+									<p:panelGrid columns="1">
+											<h:outputText value="#{item.street}"
+												style="font-weight: bold" />
+
+											<h:outputText value="#{item.streetNumber}"
+												style="font-weight: bold" />
+
+											<h:outputText value="#{item.state.stateName}"
+												style="font-weight: bold" />
+
+											<h:outputText value="#{item.floor}"
+												style="font-weight: bold" />
+									</p:panelGrid>
+								<h:outputText value="#{item.apartment}"
+												style="font-weight: bold" />     						 	
+      						 	</p:panelGrid>
+							</p:dataList>
+					</div>
+				</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

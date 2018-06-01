@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/templates/template.xhtml">
+
+	<ui:define name="title">Ventas</ui:define>
+	<ui:define name="content">
+		<h:form id="formShow">
+			<p:growl id="messages" showDetail="true" />
+			<div class="w3-container datalist-noborder">
+				<div class="w3-row">
+					<div class="w3-twothird w3-container">
+						<h3>Mis favoritos</h3>
+					</div>
+					<div class="w3-third w3-container w3-right"
+						style="margin-top: 20px;">
+						<p:menuButton value="Ordenar">
+							<p:menuitem value="Por Nombre" icon="ui-icon-arrowrefresh-1-w" />
+							<p:menuitem value="Stock" icon="ui-icon-close" />
+							<p:menuitem value="Precio" icon="ui-icon-extlink" />
+						</p:menuButton>
+						<h:outputText value="  "></h:outputText>
+						<p:commandButton id="listButton" process="@this"
+							update="@(form:formShow)" icon="fa fa-fw fa-bars">
+							<f:setPropertyActionListener value="list"
+								target="#{itemController.view}"></f:setPropertyActionListener>
+						</p:commandButton>
+						<p:commandButton id="gridButton" process="@this"
+							update="@(form:formShow)" icon="fa fa-fw fa-th-large">
+							<f:setPropertyActionListener value="grid"
+								target="#{itemController.view}"></f:setPropertyActionListener>
+						</p:commandButton>
+					</div>
+				</div>
+				<p:separator />
+				<p:dataList id="orders" value="#{orderDetailController.orderDetailByCompany}"
+					var="detail" type="unordered" itemType="none"
+					paginatorPosition="bottom" rows="4"
+					rendered="#{itemController.view != 'grid'}">
+					<div class="w3-row" style="margin: 3px; font-size: 12px;">
+
+						<div class="w3-quarter w3-container">
+							<p:graphicImage library="images"
+								name="#{detail.item.firstPicture}"
+								style="width: 100px; height:100px; margin: auto;" />
+						</div>
+						<div class="w3-half w3-container">
+							<p:commandLink>
+								<h:outputText value="#{detail.item.itemName}"
+									style="font-weight: bold;" />
+							</p:commandLink>
+							<br /> <br />
+							<h:outputText value=" por #{detail.item.company.businessName}" />
+							<br />
+							<h:outputText value="2 Unidades" />
+							<br /> <br />
+							<h:outputText value="Enviado" style="color:green" />
+							<br />
+							<h:outputText value="Sin calificacion" />
+							<br />
+						</div>
+						<div class="w3-quarter w3-container">
+							<p>
+								<h:outputText value="$ #{detail.item.channelPrice}" />
+							</p>
+						</div>
+					</div>
+				</p:dataList>
+			</div>
+			<div class="ui-g ui-fluid datagrid-noborder">
+				<div class="ui-g-12">
+					<p:dataGrid value="#{orderDetailController.items}" var="detail"
+						columns="3" layout="grid" rows="6" paginator="true"
+						paginatorPosition="bottom" id="gridView"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="3,6,9,12,16"
+						rendered="#{itemController.view == 'grid'}">
+
+						<div class="w3-container">
+							<div class="w3-card-4" style="margin: 5px;">
+								<p:graphicImage library="images"
+									name="#{detail.item.firstPicture}"
+									style="width: 100px; height:100px; margin: auto;" />
+								<div class="w3-container" style="font-size: 12px">
+									<p:commandLink action="viewItem.xhtml">
+										<f:setPropertyActionListener value="#{item}"
+											target="#{itemController.selected}" />
+										<h:outputText value="#{detail.item.itemName}"
+											style="font-weight: bold" />
+									</p:commandLink>
+									<br />
+									<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+										columnClasses="ui-grid-4, ui-grid-4">
+										<h:outputText value="#{detail.quantity} unidades"
+											style="font-weight:bold" />
+										<p:rating value="4" readonly="true" style="height:10px;" />
+
+										<h:outputText value="$ #{detail.unitPrice}"
+											style="font-weight:bold;" />
+										<h:outputText value="10 ventas" />
+									</p:panelGrid>
+								</div>
+							</div>
+						</div>
+					</p:dataGrid>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
