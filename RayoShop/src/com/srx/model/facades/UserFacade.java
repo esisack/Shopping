@@ -45,7 +45,7 @@ public class UserFacade extends AbstractFacade<User> {
 
 	}
 
-	public User userByDocument(int document) {	
+	public User userByDocument(long document) {	
 		User userByDocument = null;
 		try {
 			TypedQuery<User> query = em.createNamedQuery("User.findByMail", User.class);

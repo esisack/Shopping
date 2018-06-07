@@ -188,7 +188,7 @@ public class UserController extends AbstractController<User> implements Serializ
 			return null;
 		};
 		
-	
+		this.newUser.setEnabled("S");
 		this.ejbFacade.create(newUser);
 		return "/login.xhtml?faces-redirect=true";
 	}

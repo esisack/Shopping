@@ -50,7 +50,7 @@ public class Company implements Serializable {
 
 	private String phone;
 
-	private int tin;
+	private long tin;
 
 	// bi-directional many-to-one association to Balance
 	@OneToMany(mappedBy = "company")
@@ -219,11 +219,11 @@ public class Company implements Serializable {
 		this.phone = phone;
 	}
 
-	public int getTin() {
+	public long getTin() {
 		return this.tin;
 	}
 
-	public void setTin(int tin) {
+	public void setTin(long tin) {
 		this.tin = tin;
 	}
 

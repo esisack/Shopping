@@ -22,7 +22,7 @@ public class User implements Serializable {
 	@Column(name = "USER_ID")
 	private int userId;
 
-	private int document;
+	private long document;
 
 	private String enabled;
 
@@ -108,11 +108,11 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
-	public int getDocument() {
+	public long getDocument() {
 		return this.document;
 	}
 
-	public void setDocument(int document) {
+	public void setDocument(long document) {
 		this.document = document;
 	}
 
