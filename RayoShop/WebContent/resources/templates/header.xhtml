@@ -36,27 +36,125 @@
 				</p:commandLink>
 				<p:tieredMenu overlay="true" trigger="dynaButton" my="left top"
 					at="left bottom" style="width:250px" backLabel="Volver">
-					<p:menuitem value="Tefonos y Celulares"
+					<p:menuitem value="Alimentos y Bebidas"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="18"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Aanimales y mascotas"
 						action="/pages/items/index.xhtml?faces-redirect=true">
 						<f:setPropertyActionListener value="30"
 							target="#{itemController.categoryId}" />
 					</p:menuitem>
-					<p:separator />
-					<p:menuitem value="Hogar y Electrodomesticos"
+					<p:menuitem value="Antiguedades"
 						action="/pages/items/index.xhtml?faces-redirect=true">
-						<f:setPropertyActionListener value="35"
+						<f:setPropertyActionListener value="40"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Arte y Artesanias"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="70"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Bebes"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="88"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Belleza y Cuidado"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="109"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Camaras y Accesorios"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="122"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Celulares y Telefonos"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="133"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Colecciones Diversas"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="148"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Computacion y Tecnologia"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="162"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>					
+					<p:menuitem value="Consolas y Videojuegos"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="186"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Deportes y Fitnes"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="195"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Electrodomesticos"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="225"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Electronica, audio y video"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="235"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Herramientas y Construccion"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="257"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Industrias y Oficinas"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="277"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Instrumentos Musicales"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="307"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Joyas y Relojes"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="320"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Juegos y Juguetes"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="330"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Libros y Revistas"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="347"
 							target="#{itemController.categoryId}" />
 					</p:menuitem>
 					<p:separator />
-					<p:menuitem value="Tecnologia y Computacion"
+					<p:menuitem value="Ropa y Accesorios"
 						action="/pages/items/index.xhtml?faces-redirect=true">
-						<f:setPropertyActionListener value="32"
+						<f:setPropertyActionListener value="357"
 							target="#{itemController.categoryId}" />
 					</p:menuitem>
-					<p:separator />
-					<p:menuitem value="Jugueteria y Regaleria"
+					<p:menuitem value="Salud y Equipamiento"
 						action="/pages/items/index.xhtml?faces-redirect=true">
-						<f:setPropertyActionListener value="43"
+						<f:setPropertyActionListener value="379"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Servicios"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="388"
+							target="#{itemController.categoryId}" />
+					</p:menuitem>
+					<p:menuitem value="Otras Categorias"
+						action="/pages/items/index.xhtml?faces-redirect=true">
+						<f:setPropertyActionListener value="406"
 							target="#{itemController.categoryId}" />
 					</p:menuitem>
 					<p:separator />
@@ -77,7 +175,7 @@
 						<f:setPropertyActionListener value="49"
 							target="#{itemController.categoryId}" />
 					</p:menuitem>
-					<p:separator />
+					<p:separator/>
 					<p:menuitem value="Vehiculos"
 						action="/pages/vehicles/index.xhtml?faces-redirect=true" ajax="false">
 						<f:setPropertyActionListener value="49"

@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,9 +20,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
-import com.srx.model.entities.Company;
 import com.srx.model.entities.Item;
-import com.srx.model.entities.User;
 import com.srx.model.facades.ItemFacade;
 
 @ManagedBean(name = "itemController")
@@ -108,7 +105,6 @@ public class ItemController extends AbstractController<Item> implements Serializ
 		this.itemCreate = itemCreate;
 	}
 	
-
 	public Integer getCategoryId() {
 		return categoryId;
 	}
@@ -116,7 +112,6 @@ public class ItemController extends AbstractController<Item> implements Serializ
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
-
 	
 	public UserController getUserController() {
 		return userController;

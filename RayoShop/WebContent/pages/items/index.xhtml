@@ -28,7 +28,7 @@
 		<div class="w3-container datalist-noborder">
 			<h:outputText value="Categoria" />
 			<hr style="margin: 5px" />
-			<p:repeat var="category" value="#{categoryController.items}">
+			<p:repeat var="category" value="#{categoryController.itemsByCategory}">
 				<p:commandLink>
 					<h:outputText value="#{category.categoryName}"
 						style="color:gray; font-weight: bold;font-size:12px;" />
