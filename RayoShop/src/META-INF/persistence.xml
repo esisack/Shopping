@@ -2,53 +2,5 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="SRX-Marketplace">
 		<jta-data-source>jdbc/RayoShop</jta-data-source>
-		<class>com.srx.model.entities.Address</class>
-		<class>com.srx.model.entities.Attribute</class>
-		<class>com.srx.model.entities.AttributeList</class>
-		<class>com.srx.model.entities.Auxiliar</class>
-		<class>com.srx.model.entities.Balance</class>
-		<class>com.srx.model.entities.Branch</class>
-		<class>com.srx.model.entities.Campaign</class>
-		<class>com.srx.model.entities.CampaignPrice</class>
-		<class>com.srx.model.entities.CampaignType</class>
-		<class>com.srx.model.entities.Category</class>
-		<class>com.srx.model.entities.Collection</class>
-		<class>com.srx.model.entities.Company</class>
-		<class>com.srx.model.entities.CompanyOrder</class>
-		<class>com.srx.model.entities.CompanyPayment</class>
-		<class>com.srx.model.entities.Country</class>
-		<class>com.srx.model.entities.Customer</class>
-		<class>com.srx.model.entities.DisplayAd</class>
-		<class>com.srx.model.entities.Email</class>
-		<class>com.srx.model.entities.FiscalPosition</class>
-		<class>com.srx.model.entities.Inventory</class>
-		<class>com.srx.model.entities.Item</class>
-		<class>com.srx.model.entities.ItemCode</class>
-		<class>com.srx.model.entities.ItemAd</class>
-		<class>com.srx.model.entities.ItemAttribute</class>
-		<class>com.srx.model.entities.ItemType</class>
-		<class>com.srx.model.entities.ItemWarning</class>
-		<class>com.srx.model.entities.Make</class>
-		<class>com.srx.model.entities.Model</class>
-		<class>com.srx.model.entities.Offer</class>
-		<class>com.srx.model.entities.OfficialStore</class>
-		<class>com.srx.model.entities.Order</class>
-		<class>com.srx.model.entities.OrderDetail</class>
-		<class>com.srx.model.entities.Picture</class>
-		<class>com.srx.model.entities.Plan</class>
-		<class>com.srx.model.entities.Question</class>
-		<class>com.srx.model.entities.SecurityItem</class>
-		<class>com.srx.model.entities.ShippingOrder</class>
-		<class>com.srx.model.entities.ShippingOrderDetail</class>
-		<class>com.srx.model.entities.ShopCart</class>
-		<class>com.srx.model.entities.State</class>
-		<class>com.srx.model.entities.TextAd</class>
-		<class>com.srx.model.entities.User</class>
-		<class>com.srx.model.entities.UserKarma</class>
-		<class>com.srx.model.entities.UserPartner</class>
-		<class>com.srx.model.entities.Vendor</class>
-		<class>com.srx.model.entities.Version</class>
-		<class>com.srx.model.entities.WishList</class>
-		<class>com.srx.model.entities.WishListLog</class>
 	</persistence-unit>
 </persistence>
